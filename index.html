@@ -205,6 +205,46 @@
             padding: 25px;
         }
         
+        .partner-architecture {
+            margin-bottom: 20px;
+        }
+        
+        .partner-architecture h4 {
+            color: #0f62fe;
+            margin-bottom: 0;
+            font-size: 1.1em;
+        }
+        
+        .partner-architecture h4 a {
+            color: #0f62fe;
+            text-decoration: none;
+            transition: text-decoration 0.3s ease;
+        }
+        
+        .partner-architecture h4 a:hover {
+            text-decoration: underline;
+        }
+        
+        .partner-documents {
+            margin: 15px 0;
+        }
+        
+        .partner-documents p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+        
+        .partner-documents a {
+            color: #0f62fe;
+            text-decoration: none;
+            border-bottom: 1px dotted #0f62fe;
+            transition: border-bottom 0.3s ease;
+        }
+        
+        .partner-documents a:hover {
+            border-bottom-style: solid;
+        }
+        
         .partner-strengths {
             margin-bottom: 20px;
         }
@@ -227,7 +267,7 @@
         }
         
         .strength-list li:before {
-            content: "✓";
+            content: "✔";
             position: absolute;
             left: 0;
             color: #00b050;
@@ -480,12 +520,15 @@
         <section class="partners-section">
             <h2>🤝 IBM Business Partner Architectures</h2>
             <div class="partners-grid">
-                <div class="partner-card" onclick="window.location.href='perficient-civic-engagement.html'">
+                <div class="partner-card">
                     <div class="partner-header">
-                        <div class="partner-name"><a href="https://www.perficient.com/" target="_blank" onclick="event.stopPropagation()">Perficient</a></div>
+                        <div class="partner-name"><a href="https://www.perficient.com/" target="_blank">Perficient</a></div>
                         <div class="partner-pattern">Prime Application + Systems Integrator</div>
                     </div>
                     <div class="partner-content">
+                        <div class="partner-architecture">
+                            <h4><a href="perficient-civic-engagement.html">Proposed Architecture</a></h4>
+                        </div>
                         <div class="partner-strengths">
                             <h4>Core Strengths:</h4>
                             <ul class="strength-list">
@@ -502,18 +545,21 @@
                                 <span class="tech-badge ibm">API Connect</span>
                                 <span class="tech-badge ibm">IBM Verify/App ID</span>
                                 <span class="tech-badge ibm">Db2/Db2 Warehouse</span>
-                                <span class="tech-badge"><a href="laserfiche.html" onclick="event.stopPropagation()">Laserfiche</a> Integration</span>
+                                <span class="tech-badge"><a href="laserfiche.html">Laserfiche</a> Integration</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="partner-card" onclick="window.location.href='glasshouse-civic-platform.html'">
+                <div class="partner-card">
                     <div class="partner-header">
-                        <div class="partner-name"><a href="https://www.ghsystems.com/" target="_blank" onclick="event.stopPropagation()">GlassHouse Systems</a></div>
+                        <div class="partner-name"><a href="https://www.ghsystems.com/" target="_blank">GlassHouse Systems</a></div>
                         <div class="partner-pattern">Infrastructure Security Anchor + Managed SecOps</div>
                     </div>
                     <div class="partner-content">
+                        <div class="partner-architecture">
+                            <h4><a href="glasshouse-civic-platform.html">Proposed Architecture</a></h4>
+                        </div>
                         <div class="partner-strengths">
                             <h4>Core Strengths:</h4>
                             <ul class="strength-list">
@@ -529,20 +575,27 @@
                                 <span class="tech-badge ibm">Security & Compliance Center</span>
                                 <span class="tech-badge ibm">Key Protect/Hyper Protect</span>
                                 <span class="tech-badge ibm">Cloud Monitoring/Logs</span>
-                                <span class="tech-badge"><a href="granicus.html" onclick="event.stopPropagation()">Granicus</a>/<a href="publicinput.html" onclick="event.stopPropagation()">PublicInput</a></span>
+                                <span class="tech-badge"><a href="granicus.html">Granicus</a>/<a href="publicinput.html">PublicInput</a></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="partner-card" onclick="window.location.href='accelbi-civic-platform.html'">
+                <div class="partner-card">
                     <div class="partner-header">
-                        <div class="partner-name"><a href="https://www.accelbi.com/" target="_blank" onclick="event.stopPropagation()">AccelBI</a></div>
+                        <div class="partner-name"><a href="https://www.accelbi.com/" target="_blank">AccelBI</a></div>
                         <div class="partner-pattern">Data/AI-Forward Application + Analytics Depth</div>
                     </div>
                     <div class="partner-content">
+                        <div class="partner-architecture">
+                            <h4><a href="accelbi-civic-platform.html">Proposed Architecture</a></h4>
+                        </div>
                         <div class="partner-strengths">
                             <h4>Core Strengths:</h4>
+                            <div class="partner-documents">
+                                <p><a href="accelbi-digital-transformation.pdf">AccelBI Digital Transformation Overview</a></p>
+                                <p><a href="accelbi-smart-resonant-services.pdf">AccelBI Smart Resonant Services</a></p>
+                            </div>
                             <ul class="strength-list">
                                 <li>Advanced sentiment & theme analysis</li>
                                 <li>Demographics vs. census comparison</li>
@@ -558,18 +611,21 @@
                                 <span class="tech-badge ibm">Db2 Warehouse</span>
                                 <span class="tech-badge ibm">Knowledge Catalog</span>
                                 <span class="tech-badge ibm">API Connect</span>
-                                <span class="tech-badge"><a href="zencity.html" onclick="event.stopPropagation()">Zencity</a>/<a href="publicinput.html" onclick="event.stopPropagation()">PublicInput</a></span>
+                                <span class="tech-badge"><a href="zencity.html">Zencity</a>/<a href="publicinput.html">PublicInput</a></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="partner-card" onclick="window.location.href='lantrasoft-civic-platform.html'">
+                <div class="partner-card">
                     <div class="partner-header">
-                        <div class="partner-name"><a href="https://www.lantrasoft.com/" target="_blank" onclick="event.stopPropagation()">Lantrasoft</a></div>
+                        <div class="partner-name"><a href="https://www.lantrasoft.com/" target="_blank">Lantrasoft</a></div>
                         <div class="partner-pattern">Cost-Effective Custom + ISV Fallback</div>
                     </div>
                     <div class="partner-content">
+                        <div class="partner-architecture">
+                            <h4><a href="lantrasoft-civic-platform.html">Proposed Architecture</a></h4>
+                        </div>
                         <div class="partner-strengths">
                             <h4>Core Strengths:</h4>
                             <ul class="strength-list">
@@ -586,7 +642,7 @@
                                 <span class="tech-badge ibm">API Connect</span>
                                 <span class="tech-badge ibm">IBM Verify/App ID</span>
                                 <span class="tech-badge ibm">Event Notifications</span>
-                                <span class="tech-badge"><a href="publicinput.html" onclick="event.stopPropagation()">PublicInput</a>/<a href="citizenlab.html" onclick="event.stopPropagation()">CitizenLab</a></span>
+                                <span class="tech-badge"><a href="publicinput.html">PublicInput</a>/<a href="citizenlab.html">CitizenLab</a></span>
                             </div>
                         </div>
                     </div>
