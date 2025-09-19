@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlassHouse Systems - Civic Engagement Platform Architecture</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+        
+        .controls {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .controls button {
+            display: block;
+            width: 100px;
+            margin: 5px 0;
+            padding: 8px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .controls button:hover {
+            background: #2563eb;
+        }
+        
+        .legend {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 14px;
+        }
+        
+        .legend h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .legend-line {
+            width: 40px;
+            height: 4px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        
+        .user-traffic { background: #10b981; }
+        .auth-flow { background: #f59e0b; }
+        .api-flow { background: #3b82f6; }
+        .data-flow { background: #8b5cf6; }
+        .integration-flow { background: #ec4899; }
+        .monitoring-flow { background: #6b7280; }
+        .security-flow { background: #dc2626; }
+        .optional-flow { background: #94a3b8; border: 2px dashed #64748b; }
+        
+        #diagram-container {
+            width: 5000px;
+            height: 3500px;
+            padding: 100px;
+            transform-origin: top left;
+            transition: transform 0.3s ease;
+        }
+        
+        .mermaid {
+            font-size: 24px !important;
+        }
+        
+        /* Override Mermaid's default text sizing */
+        .mermaid text {
+            font-size: 20px !important;
+            font-weight: 600 !important;
+        }
+        
+        .mermaid .nodeLabel {
+            font-size: 20px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            font-size: 18px !important;
+            font-weight: bold !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="legend">
+        <h3>Flow Types</h3>
+        <div class="legend-item">
+            <div class="legend-line user-traffic"></div>
+            <span>User Traffic</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line auth-flow"></div>
+            <span>Authentication</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line api-flow"></div>
+            <span>API Calls</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line data-flow"></div>
+            <span>Data Processing</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line integration-flow"></div>
+            <span>External Integration</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line monitoring-flow"></div>
+            <span>Monitoring/Logs</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line security-flow"></div>
+            <span>Security/Compliance</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line optional-flow"></div>
+            <span>Optional/Private</span>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button onclick="setZoom(0.25)">25%</button>
+        <button onclick="setZoom(0.5)">50%</button>
+        <button onclick="setZoom(0.75)">75%</button>
+        <button onclick="setZoom(1)">100%</button>
+    </div>
+    
+    <div id="diagram-container">
+        <div class="mermaid">
+%%{init: {'theme':'default', 'themeVariables': {'fontSize':'24px', 'fontFamily':'Arial', 'primaryColor':'#e8f4ff', 'primaryBorderColor':'#1166cc', 'primaryTextColor':'#000', 'lineColor':'#333', 'secondaryColor':'#dcfce7', 'tertiaryColor':'#f3e8ff'}}}%%
+
+flowchart TB
+    subgraph CITY["<b>🏛️ EXTERNAL - CITY & PUBLIC</b>"]
+      Resident["<b>👤 Resident</b><br/>Web/Mobile"]
+      Admin["<b>👔 City Staff</b><br/>Admin Portal"]
+      Laserfiche["<b>📁 Laserfiche</b><br/>Records System"]
+      CMS["<b>🌐 City Website</b><br/>CMS"]
+      Social["<b>💬 Social</b><br/>Channels"]
+    end
+    
+    subgraph ISVLAYER["<b>🎯 CIVIC ENGAGEMENT ISV</b><br/>GHS Subcontracts & Manages"]
+      GRANICUS["<b>📊 Granicus</b><br/>(Bang the Table)<br/>OR<br/><b>📋 PublicInput</b><br/>━━━━━━━━━<br/>Surveys/Polls<br/>Dashboards<br/>Project Tracking<br/>Multilingual/SMS<br/>WCAG Compliant"]
+    end
+    
+    subgraph GHS["<b>🛡️ GLASSHOUSE SYSTEMS</b><br/>Infrastructure Security Anchor + Managed Operations"]
+      ARCH["<b>🏗️ Architecture</b><br/>& Hardening<br/>━━━━━━━━━<br/>Landing Zone<br/>Multi-Zone Design<br/>99.9% SLA"]
+      SECOPS["<b>🔒 24×7 SecOps</b><br/>━━━━━━━━━<br/>Monitoring<br/>Incident Response<br/>Vuln/Patch Pipeline<br/>Backup/Restore"]
+      INTEG["<b>🔗 Integration SI</b><br/>━━━━━━━━━<br/>SSO Implementation<br/>Laserfiche Connect<br/>CMS/Social APIs<br/>Data Pipelines"]
+      PM["<b>📋 PM & Rollout</b><br/>━━━━━━━━━<br/>Change Management<br/>Stakeholder Demos<br/>Michigan On-Site<br/>ISV Coordination"]
+    end
+    
+    subgraph IBM["<b>☁️ IBM CLOUD PLATFORM</b><br/>Baseline BOM - Managed by GlassHouse"]
+      subgraph VPC["<b>🔐 VPC LANDING ZONE</b><br/>Multi-Zone Architecture"]
+        LB["<b>⚖️ Load Balancer</b><br/>for VPC"]
+        API["<b>🌉 API Connect</b><br/>Gateway"]
+        ROKS["<b>🐳 OpenShift</b><br/>ROKS<br/>Multi-Zone<br/>99.9% SLA"]
+        DB["<b>💾 Db2/PostgreSQL</b><br/>App Data"]
+        DWH["<b>📊 Db2 Warehouse</b><br/>watsonx.data<br/>Analytics Mart"]
+        ES["<b>📨 Event Streams</b><br/>Kafka"]
+        EN["<b>📧 Event</b><br/>Notifications<br/>Email/SMS"]
+        WAI["<b>🤖 watsonx.ai</b><br/>AI Analytics<br/>NLP/Sentiment"]
+        WG["<b>🎯 watsonx</b><br/>governance<br/>Model Controls"]
+      end
+      
+      subgraph SECURITY["<b>🛡️ SECURITY & COMPLIANCE LAYER</b>"]
+        SCC["<b>⚡ Security &</b><br/><b>Compliance Center</b><br/>━━━━━━━━━<br/>Compliance Evidence<br/>Control Library<br/>Audit Reports"]
+        KP["<b>🔐 Key Protect</b><br/><b>Hyper Protect</b><br/>━━━━━━━━━<br/>KMS/HSM<br/>Encryption Keys<br/>FIPS 140-2 L4"]
+        IAM["<b>👥 IBM Cloud IAM</b><br/>━━━━━━━━━<br/>Policy Models<br/>RBAC/ABAC<br/>Service IDs"]
+        SSO["<b>🆔 IBM Verify</b><br/>App ID<br/>SSO/OIDC/SAML"]
+      end
+      
+      subgraph OBSERVE["<b>📡 OBSERVABILITY</b>"]
+        MON["<b>📊 Cloud Monitoring</b><br/>Metrics & Alerts"]
+        LOGS["<b>📝 Cloud Logs</b><br/>Activity Tracker"]
+        FLOW["<b>🔍 Flow Logs</b><br/>for VPC<br/>Network Analysis"]
+      end
+      
+      CR["<b>📦 Container</b><br/>Registry"]
+      CD["<b>🚀 Continuous</b><br/>Delivery"]
+      DL["<b>🔌 Direct Link</b><br/>(Optional)<br/>Private Connectivity"]
+    end
+    
+    %% USER TRAFFIC - Thick Green Lines
+    Resident ==>|"<b>HTTPS/TLS</b><br/>RESIDENT ACCESS"| LB
+    Admin ==>|"<b>HTTPS/TLS</b><br/>STAFF ACCESS"| LB
+    
+    %% LOAD BALANCER ROUTING - Blue Lines
+    LB ==>|"<b>CIVIC APP</b>"| GRANICUS
+    LB ==>|"<b>API DIRECT</b>"| API
+    
+    %% ISV AUTHENTICATION - Orange Lines
+    GRANICUS -.->|"<b>OIDC/SAML</b><br/>AUTH"| SSO
+    SSO -.->|"<b>TOKEN</b>"| GRANICUS
+    
+    %% ISV TO API GATEWAY - Blue Lines
+    GRANICUS ==>|"<b>API CALLS</b>"| API
+    API ==>|"<b>BACKEND</b>"| ROKS
+    
+    %% DATA PROCESSING - Purple Lines
+    ROKS ==>|"<b>DATA OPS</b>"| DB
+    ROKS ==>|"<b>EVENTS</b>"| ES
+    ES ==>|"<b>AI PIPELINE</b>"| WAI
+    WAI ==>|"<b>INSIGHTS</b>"| DWH
+    WAI -.->|"<b>GOVERNANCE</b>"| WG
+    INTEG ==>|"<b>ETL/ANALYTICS</b>"| DWH
+    DWH ==>|"<b>REPORTS</b>"| GRANICUS
+    
+    %% NOTIFICATION FLOW - Green
+    GRANICUS ==>|"<b>TRIGGER</b>"| EN
+    EN ==>|"<b>Email/SMS</b><br/>NOTIFICATIONS"| Resident
+    
+    %% EXTERNAL INTEGRATIONS - Magenta Lines
+    INTEG ===>|"<b>INTEGRATION</b>"| API
+    API ===>|"<b>REST/JSON</b><br/>RECORDS"| Laserfiche
+    API ===>|"<b>REST/JSON</b><br/>CONTENT"| CMS
+    API ===>|"<b>REST/JSON</b><br/>SOCIAL"| Social
+    
+    %% GHS OPERATIONS - Thick Security Red Lines
+    ARCH ===>|"<b>DESIGN & BUILD</b>"| VPC
+    ARCH ===>|"<b>HARDENING</b>"| ROKS
+    SECOPS ===>|"<b>24×7 MONITOR</b>"| MON
+    SECOPS ===>|"<b>INCIDENT MGT</b>"| LOGS
+    SECOPS ===>|"<b>COMPLIANCE</b>"| SCC
+    SECOPS ===>|"<b>PATCH/VULN</b>"| ROKS
+    
+    %% SECURITY ENFORCEMENT - Red Dashed Lines
+    SCC -..->|"<b>POLICIES</b>"| ROKS
+    SCC -..->|"<b>EVIDENCE</b>"| SECOPS
+    KP -..->|"<b>ENCRYPTION</b>"| DB
+    KP -..->|"<b>ENCRYPTION</b>"| DWH
+    KP -..->|"<b>KEYS</b>"| ROKS
+    IAM -..->|"<b>ACCESS</b>"| VPC
+    FLOW -..->|"<b>NETWORK</b>"| SECOPS
+    
+    %% CI/CD FLOWS - Thin Blue
+    CD -.->|"images"| CR
+    CD -.->|"deploy"| ROKS
+    INTEG -.->|"config"| CD
+    
+    %% PM COORDINATION - Thin Green
+    PM -.->|"coordinate"| GRANICUS
+    PM -.->|"manage"| ARCH
+    PM -.->|"oversee"| SECOPS
+    PM -.->|"drive"| INTEG
+    
+    %% PRIVATE NETWORK - Dashed Gray
+    DL -..->|"<b>PRIVATE NET</b><br/>(If Required)"| VPC
+    Laserfiche -..->|"<b>PRIVATE LINK</b><br/>(Optional)"| DL
+    
+    classDef city fill:#fef3c7,stroke:#f59e0b,stroke-width:3px,color:#000
+    classDef isv fill:#e0e7ff,stroke:#4f46e5,stroke-width:4px,color:#312e81
+    classDef ghs fill:#fce7f3,stroke:#ec4899,stroke-width:4px,color:#831843
+    classDef ibm fill:#dbeafe,stroke:#2563eb,stroke-width:3px,color:#1e3a8a
+    classDef security fill:#fee2e2,stroke:#dc2626,stroke-width:4px,color:#7f1d1d
+    classDef observe fill:#f0f9ff,stroke:#0ea5e9,stroke-width:3px,color:#075985
+    
+    class Resident,Admin,Laserfiche,CMS,Social city
+    class GRANICUS isv
+    class ARCH,SECOPS,INTEG,PM ghs
+    class LB,API,ROKS,DB,DWH,ES,EN,WAI,WG,CR,CD ibm
+    class SCC,KP,IAM,SSO security
+    class MON,LOGS,FLOW observe
+    class DL ibm
+        </div>
+    </div>
+    
+    <script>
+        function setZoom(scale) {
+            document.getElementById('diagram-container').style.transform = `scale(${scale})`;
+        }
+        
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                rankSpacing: 300,
+                nodeSpacing: 200,
+                padding: 80,
+                diagramPadding: 150
+            },
+            themeVariables: {
+                fontSize: '24px',
+                fontFamily: 'Arial, sans-serif',
+                primaryColor: '#dbeafe',
+                primaryTextColor: '#000000',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#333333',
+                secondaryColor: '#dcfce7',
+                tertiaryColor: '#e0e7ff',
+                edgeLabelBackground: '#ffffff'
+            }
+        });
+        
+        // Start at 50% zoom for overview
+        window.addEventListener('load', function() {
+            setZoom(0.5);
+        });
+    </script>
+</body>
+</html>

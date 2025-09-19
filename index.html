@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of Owosso Community Engagement Platform - IBM Cloud Partner Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            background-image: linear-gradient(135deg, #667eea05 0%, #764ba205 100%);
+        }
+        
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #0f62fe;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #525252;
+            margin-bottom: 20px;
+        }
+        
+        .rfp-info {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #0f62fe;
+        }
+        
+        .rfp-info h3 {
+            color: #161616;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .rfp-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            background: #0f62fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .ibm-badge {
+            background: #0f62fe;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(15, 98, 254, 0.3);
+        }
+        
+        .key-objectives {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        
+        .key-objectives h2 {
+            color: #161616;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .objective-card {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #0f62fe;
+        }
+        
+        .objective-card h4 {
+            color: #0f62fe;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .partners-section {
+            margin-bottom: 40px;
+        }
+        
+        .partners-section h2 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .partner-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .partner-header {
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-bottom: 3px solid #0f62fe;
+        }
+        
+        .partner-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #161616;
+            margin-bottom: 5px;
+        }
+        
+        .partner-pattern {
+            font-size: 0.9em;
+            color: #525252;
+            font-style: italic;
+        }
+        
+        .partner-content {
+            padding: 25px;
+        }
+        
+        .partner-strengths {
+            margin-bottom: 20px;
+        }
+        
+        .partner-strengths h4 {
+            color: #0f62fe;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .strength-list {
+            list-style: none;
+        }
+        
+        .strength-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #525252;
+        }
+        
+        .strength-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00b050;
+            font-weight: bold;
+        }
+        
+        .partner-tech {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tech-badge {
+            background: #e0e0e0;
+            color: #161616;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+        
+        .tech-badge.ibm {
+            background: #0f62fe;
+            color: white;
+        }
+        
+        .matrix-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        
+        .matrix-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .matrix-header h2 {
+            color: #161616;
+            margin-bottom: 10px;
+        }
+        
+        .matrix-description {
+            color: #525252;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .matrix-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .matrix-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+        
+        .reference-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        
+        .reference-section h2 {
+            color: #161616;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .document-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .document-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #0f62fe;
+        }
+        
+        .doc-icon {
+            font-size: 3em;
+            flex-shrink: 0;
+        }
+        
+        .doc-content h4 {
+            color: #0f62fe;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        
+        .doc-content p {
+            color: #525252;
+            font-size: 0.95em;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        
+        .doc-type {
+            display: inline-block;
+            background: #0f62fe;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .deadline-alert {
+            background: #ff4d4d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8em; }
+            .partners-grid { grid-template-columns: 1fr; }
+            .header-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>City of Owosso Community Engagement Platform</h1>
+                    <p class="subtitle">IBM Cloud Partner Analysis for RFP Response</p>
+                    <div class="rfp-info">
+                        <h3>🏛️ RFP Overview</h3>
+                        <div class="rfp-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span><strong>Location:</strong> Owosso, Michigan</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">👥</span>
+                                <span><strong>Population:</strong> ~14,500 residents</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📅</span>
+                                <span><strong>Issued:</strong> September 11, 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">⏰</span>
+                                <span><strong>Due:</strong> October 7, 2025 @ 3:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="ibm-badge">IBM Cloud Platform</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="key-objectives">
+            <h2>🎯 Key Project Objectives</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <h4>📢 Broaden Participation</h4>
+                    <p>Extend resident engagement beyond traditional in-person meetings and social media channels</p>
+                </div>
+                <div class="objective-card">
+                    <h4>📊 Data-Driven Insights</h4>
+                    <p>Provide quantifiable analytics on community sentiment with AI-powered analysis</p>
+                </div>
+                <div class="objective-card">
+                    <h4>⚖️ Equitable Engagement</h4>
+                    <p>Ensure underrepresented populations have access through multilingual support and SMS options</p>
+                </div>
+                <div class="objective-card">
+                    <h4>🔍 Transparency</h4>
+                    <p>Public-facing dashboards showing aggregated results and project outcomes</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="partners-section">
+            <h2>🤝 IBM Business Partner Architectures</h2>
+            <div class="partners-grid">
+                <a href="perficient-civic-engagement.html" class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-name">Perficient</div>
+                        <div class="partner-pattern">Prime Application + Systems Integrator</div>
+                    </div>
+                    <div class="partner-content">
+                        <div class="partner-strengths">
+                            <h4>Core Strengths:</h4>
+                            <ul class="strength-list">
+                                <li>Front-end & microservices ownership</li>
+                                <li>Strong WCAG/VPAT compliance discipline</li>
+                                <li>Proven municipal systems integration</li>
+                                <li>SaaS operations expertise</li>
+                            </ul>
+                        </div>
+                        <div class="partner-tech">
+                            <strong>Key Technologies:</strong>
+                            <div class="tech-badges">
+                                <span class="tech-badge ibm">OpenShift ROKS</span>
+                                <span class="tech-badge ibm">API Connect</span>
+                                <span class="tech-badge ibm">watsonx.ai</span>
+                                <span class="tech-badge">Laserfiche</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="glasshouse-civic-platform.html" class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-name">GlassHouse Systems</div>
+                        <div class="partner-pattern">Infrastructure Security Anchor + Managed SecOps</div>
+                    </div>
+                    <div class="partner-content">
+                        <div class="partner-strengths">
+                            <h4>Core Strengths:</h4>
+                            <ul class="strength-list">
+                                <li>24×7 security operations center</li>
+                                <li>Multi-zone architecture (99.9% SLA)</li>
+                                <li>Vulnerability & patch management</li>
+                                <li>Compliance evidence automation</li>
+                            </ul>
+                        </div>
+                        <div class="partner-tech">
+                            <strong>Key Technologies:</strong>
+                            <div class="tech-badges">
+                                <span class="tech-badge ibm">Security Center</span>
+                                <span class="tech-badge ibm">Key Protect</span>
+                                <span class="tech-badge">Granicus/PublicInput</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="accelbi-civic-platform.html" class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-name">AccelBI</div>
+                        <div class="partner-pattern">Data/AI-Forward Application + Analytics Depth</div>
+                    </div>
+                    <div class="partner-content">
+                        <div class="partner-strengths">
+                            <h4>Core Strengths:</h4>
+                            <ul class="strength-list">
+                                <li>Advanced sentiment & theme analysis</li>
+                                <li>Demographics vs. census comparison</li>
+                                <li>Public analytics dashboards</li>
+                                <li>AI governance & model controls</li>
+                            </ul>
+                        </div>
+                        <div class="partner-tech">
+                            <strong>Key Technologies:</strong>
+                            <div class="tech-badges">
+                                <span class="tech-badge ibm">watsonx.ai Studio</span>
+                                <span class="tech-badge ibm">Db2 Warehouse</span>
+                                <span class="tech-badge ibm">Knowledge Catalog</span>
+                                <span class="tech-badge">Zencity</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="lantrasoft-civic-platform.html" class="partner-card">
+                    <div class="partner-header">
+                        <div class="partner-name">Lantrasoft</div>
+                        <div class="partner-pattern">Cost-Effective Custom + ISV Fallback</div>
+                    </div>
+                    <div class="partner-content">
+                        <div class="partner-strengths">
+                            <h4>Core Strengths:</h4>
+                            <ul class="strength-list">
+                                <li>Midwest proximity & on-site support</li>
+                                <li>Lean custom portal development</li>
+                                <li>Flexible runtime options (K8s/OpenShift)</li>
+                                <li>Fast iteration cycles</li>
+                            </ul>
+                        </div>
+                        <div class="partner-tech">
+                            <strong>Key Technologies:</strong>
+                            <div class="tech-badges">
+                                <span class="tech-badge ibm">Kubernetes Service</span>
+                                <span class="tech-badge ibm">Event Notifications</span>
+                                <span class="tech-badge">PublicInput/CitizenLab</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <div class="matrix-section">
+            <div class="matrix-header">
+                <h2>📋 Requirements & Ownership Matrix</h2>
+                <p class="matrix-description">
+                    Comprehensive analysis of how each IBM Business Partner addresses the RFP's 26 functional and technical requirements, 
+                    including ownership boundaries between IBM Cloud services and partner deliverables.
+                </p>
+                <a href="owosso_rfp_requirements_owner_matrix_ibm_bp.html" class="matrix-button">
+                    <span>📊</span>
+                    <span>View Detailed Comparison Matrix</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="reference-section">
+            <h2>📚 Reference Documents</h2>
+            <div class="documents-grid">
+                <a href="Executive Briefing City of Owosso Community Engagement Platform RFP.docx" class="document-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-content">
+                        <h4>Executive Briefing</h4>
+                        <p>Strategic analysis and key insights for the Community Engagement Platform RFP response</p>
+                        <span class="doc-type">DOCX</span>
+                    </div>
+                </a>
+                <a href="Owosso Community Engagement Platform RFP.pdf" class="document-card">
+                    <div class="doc-icon">📋</div>
+                    <div class="doc-content">
+                        <h4>Official RFP Document</h4>
+                        <p>Complete Request for Proposals with all requirements, evaluation criteria, and submission guidelines</p>
+                        <span class="doc-type">PDF</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <h3>IBM Cloud Platform - Field CTO Analysis</h3>
+                <p>Prepared for strategic partner evaluation and RFP response coordination</p>
+                <p class="deadline-alert">⚠️ Proposal Due: October 7, 2025 @ 3:00 PM EST</p>
+                <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">
+                    All architectures leverage IBM Cloud's enterprise platform including OpenShift (ROKS), 
+                    API Connect, watsonx.ai, Db2, Security & Compliance Center, and Key Protect.
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

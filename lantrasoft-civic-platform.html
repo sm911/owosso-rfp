@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lantrasoft - Cost-Effective Custom + ISV Fallback Architecture</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+        
+        .controls {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .controls button {
+            display: block;
+            width: 100px;
+            margin: 5px 0;
+            padding: 8px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .controls button:hover {
+            background: #2563eb;
+        }
+        
+        .legend {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 14px;
+        }
+        
+        .legend h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .legend-line {
+            width: 40px;
+            height: 4px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        
+        .user-traffic { background: #10b981; }
+        .auth-flow { background: #f59e0b; }
+        .api-flow { background: #3b82f6; }
+        .custom-dev { background: #14b8a6; }
+        .data-flow { background: #8b5cf6; }
+        .integration-flow { background: #ec4899; }
+        .monitoring-flow { background: #6b7280; }
+        .fallback-flow { background: #94a3b8; border: 2px dashed #64748b; }
+        
+        #diagram-container {
+            width: 5000px;
+            height: 3800px;
+            padding: 100px;
+            transform-origin: top left;
+            transition: transform 0.3s ease;
+        }
+        
+        .mermaid {
+            font-size: 24px !important;
+        }
+        
+        /* Override Mermaid's default text sizing */
+        .mermaid text {
+            font-size: 20px !important;
+            font-weight: 600 !important;
+        }
+        
+        .mermaid .nodeLabel {
+            font-size: 20px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            font-size: 18px !important;
+            font-weight: bold !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="legend">
+        <h3>Flow Types</h3>
+        <div class="legend-item">
+            <div class="legend-line user-traffic"></div>
+            <span>User Traffic</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line auth-flow"></div>
+            <span>Authentication</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line api-flow"></div>
+            <span>API Calls</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line custom-dev"></div>
+            <span>Custom Development</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line data-flow"></div>
+            <span>Data Processing</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line integration-flow"></div>
+            <span>External Integration</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line monitoring-flow"></div>
+            <span>Monitoring/Ops</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line fallback-flow"></div>
+            <span>ISV Fallback Option</span>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button onclick="setZoom(0.25)">25%</button>
+        <button onclick="setZoom(0.5)">50%</button>
+        <button onclick="setZoom(0.75)">75%</button>
+        <button onclick="setZoom(1)">100%</button>
+    </div>
+    
+    <div id="diagram-container">
+        <div class="mermaid">
+%%{init: {'theme':'default', 'themeVariables': {'fontSize':'24px', 'fontFamily':'Arial', 'primaryColor':'#e8f4ff', 'primaryBorderColor':'#1166cc', 'primaryTextColor':'#000', 'lineColor':'#333', 'secondaryColor':'#d1fae5', 'tertiaryColor':'#f0f9ff'}}}%%
+
+flowchart TB
+    subgraph CITY["<b>🏛️ EXTERNAL - CITY & PUBLIC</b>"]
+      Resident["<b>👤 Resident</b><br/>Web/Mobile"]
+      Admin["<b>👔 City Staff</b><br/>Admin Portal"]
+      Laserfiche["<b>📁 Laserfiche</b><br/>Records System"]
+      CMS["<b>🌐 City Website</b><br/>CMS"]
+      Social["<b>💬 Social</b><br/>Channels"]
+    end
+    
+    subgraph LANTRA["<b>💚 LANTRASOFT DELIVERY</b><br/>Cost-Effective Custom Development + Midwest Proximity"]
+      CUSTOM["<b>🎨 Custom Portal</b><br/><b>(PRIMARY PATH)</b><br/>━━━━━━━━━<br/>Lean WCAG Portal<br/>Surveys/Polls<br/>Dashboards<br/>Project Updates<br/>iOS/Android Responsive<br/>Fast Iterations"]
+      INTEGLAN["<b>🔗 Integration Layer</b><br/>━━━━━━━━━<br/>SSO Implementation<br/>Laserfiche Connect<br/>Website/Social APIs<br/>SMS Integration<br/>Data Pipelines"]
+      OPSLAN["<b>📋 Operations & PM</b><br/>━━━━━━━━━<br/>Vendor-Managed Hosting<br/>Observability & SLA<br/>Training Programs<br/>Tier-1/2 Helpdesk<br/><b>🏢 Midwest On-Site</b><br/>Discovery/Go-Live/Hypercare"]
+    end
+    
+    subgraph FALLBACK["<b>🔄 ISV FALLBACK OPTION</b><br/>If Owosso Prefers Proven Civic UX"]
+      ISV["<b>📱 PublicInput</b><br/>OR<br/><b>🌐 CitizenLab</b><br/>━━━━━━━━━<br/>Proven Civic UX<br/>Managed by Lantrasoft<br/>Light Extensions<br/>IBM Cloud Integration"]
+    end
+    
+    subgraph IBM["<b>☁️ IBM CLOUD PLATFORM</b><br/>Flexible Runtime & Enterprise Services"]
+      subgraph VPC["<b>🔐 VPC LANDING ZONE</b>"]
+        LB["<b>⚖️ Load Balancer</b>"]
+        API["<b>🌉 API Connect</b><br/>Gateway"]
+        RUNTIME["<b>🐳 OpenShift</b><br/>OR<br/><b>⚓ Kubernetes Service</b><br/>━━━━━━━━━<br/>(Smaller Footprint Option)"]
+        PGDB["<b>💾 PostgreSQL/Db2</b><br/>App Data"]
+      end
+      
+      subgraph IDENTITY["<b>🆔 IDENTITY & ACCESS</b>"]
+        VERIFY["<b>🔑 IBM Verify</b><br/><b>App ID</b><br/>━━━━━━━━━<br/>SSO<br/>RBAC"]
+      end
+      
+      subgraph DATA["<b>📊 DATA & AI</b>"]
+        DWH["<b>📈 Db2 Warehouse</b><br/>Reporting"]
+        WXAI["<b>🧠 watsonx.ai</b><br/>Sentiment Analysis"]
+        KCAT["<b>📚 Knowledge Catalog</b><br/>Governance"]
+      end
+      
+      subgraph COMMS["<b>📨 INTEGRATION & COMMS</b>"]
+        EN["<b>📧 Event Notifications</b><br/>SMS/Email"]
+        ES["<b>📡 Event Streams</b><br/>Eventing/Audit"]
+      end
+      
+      subgraph SECOPS["<b>🛡️ SECURITY & OPERATIONS</b>"]
+        KP["<b>🔐 Key Protect</b><br/>Hyper Protect"]
+        SCC["<b>⚡ Security &</b><br/>Compliance Center"]
+        MON["<b>📊 Cloud Monitoring</b><br/>Logs/Activity Tracker"]
+        FLOW["<b>🔍 Flow Logs</b>"]
+      end
+      
+      CR["<b>📦 Container Registry</b>"]
+      CD["<b>🚀 Continuous Delivery</b>"]
+    end
+    
+    %% USER TRAFFIC - Thick Green Lines
+    Resident ==>|"<b>HTTPS/TLS</b><br/>PUBLIC ACCESS"| LB
+    Admin ==>|"<b>HTTPS/TLS</b><br/>ADMIN ACCESS"| LB
+    
+    %% PRIMARY PATH - CUSTOM DEVELOPMENT - Teal Lines
+    LB ===>|"<b>PRIMARY: CUSTOM</b>"| CUSTOM
+    CUSTOM ===>|"<b>FAST ITERATIONS</b>"| RUNTIME
+    CUSTOM ===>|"<b>LEAN BUILD</b>"| API
+    
+    %% FALLBACK PATH - ISV Option - Dashed Gray Lines
+    LB -..->|"<b>FALLBACK: ISV</b>"| ISV
+    ISV -..->|"<b>IF CHOSEN</b>"| RUNTIME
+    ISV -..->|"<b>MANAGED</b>"| OPSLAN
+    
+    %% AUTHENTICATION - Orange Lines
+    CUSTOM -.->|"<b>SSO/RBAC</b>"| VERIFY
+    VERIFY -.->|"<b>TOKEN</b>"| CUSTOM
+    ISV -.->|"<b>SSO</b>"| VERIFY
+    
+    %% API & BACKEND - Blue Lines
+    API ==>|"<b>BACKEND</b>"| RUNTIME
+    RUNTIME ==>|"<b>DATA OPS</b>"| PGDB
+    
+    %% DATA PROCESSING - Purple Lines
+    PGDB ==>|"<b>REPORTING</b>"| DWH
+    RUNTIME ==>|"<b>EVENTS</b>"| ES
+    ES ==>|"<b>SENTIMENT</b>"| WXAI
+    WXAI ==>|"<b>INSIGHTS</b>"| DWH
+    DWH -.->|"<b>GOVERNANCE</b>"| KCAT
+    
+    %% EXTERNAL INTEGRATIONS - Magenta Lines
+    INTEGLAN ===>|"<b>INTEGRATION</b>"| API
+    API ===>|"<b>REST/JSON</b><br/>RECORDS"| Laserfiche
+    API ===>|"<b>REST/JSON</b><br/>CONTENT"| CMS
+    API ===>|"<b>REST/JSON</b><br/>SOCIAL"| Social
+    
+    %% NOTIFICATIONS - Green Lines
+    CUSTOM ==>|"<b>TRIGGER</b>"| EN
+    EN ==>|"<b>SMS/Email</b><br/>NOTIFICATIONS"| Resident
+    ISV -..->|"<b>NOTIFY</b>"| EN
+    
+    %% LANTRASOFT OPERATIONS - Teal Thick Lines
+    OPSLAN ===>|"<b>MANAGE</b>"| VPC
+    OPSLAN ===>|"<b>MONITOR</b>"| MON
+    OPSLAN ===>|"<b>MIDWEST PRESENCE</b>"| CUSTOM
+    
+    %% SECURITY - Red Dashed Lines
+    KP -..->|"<b>ENCRYPT</b>"| PGDB
+    KP -..->|"<b>ENCRYPT</b>"| DWH
+    SCC -..->|"<b>COMPLIANCE</b>"| RUNTIME
+    
+    %% MONITORING - Gray Thin Lines
+    RUNTIME -.->|"metrics"| MON
+    API -.->|"logs"| MON
+    LB -.->|"flow"| FLOW
+    
+    %% CI/CD - Thin Blue Lines
+    CD -.->|"images"| CR
+    CD -.->|"deploy"| RUNTIME
+    CUSTOM -.->|"builds"| CD
+    
+    classDef city fill:#fef3c7,stroke:#f59e0b,stroke-width:3px,color:#000
+    classDef lantra fill:#d1fae5,stroke:#059669,stroke-width:4px,color:#064e3b
+    classDef custom fill:#ccfbf1,stroke:#14b8a6,stroke-width:5px,color:#134e4a
+    classDef fallback fill:#f1f5f9,stroke:#64748b,stroke-width:2px,stroke-dasharray: 8 4,color:#334155
+    classDef ibm fill:#dbeafe,stroke:#2563eb,stroke-width:3px,color:#1e3a8a
+    classDef data fill:#ede9fe,stroke:#7c3aed,stroke-width:3px,color:#4c1d95
+    classDef security fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#7f1d1d
+    classDef comms fill:#ecfdf5,stroke:#10b981,stroke-width:3px,color:#064e3b
+    
+    class Resident,Admin,Laserfiche,CMS,Social city
+    class CUSTOM custom
+    class INTEGLAN,OPSLAN lantra
+    class ISV fallback
+    class LB,API,RUNTIME,PGDB,CR,CD ibm
+    class DWH,WXAI,KCAT data
+    class VERIFY,KP,SCC,MON,FLOW security
+    class EN,ES comms
+        </div>
+    </div>
+    
+    <script>
+        function setZoom(scale) {
+            document.getElementById('diagram-container').style.transform = `scale(${scale})`;
+        }
+        
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                rankSpacing: 300,
+                nodeSpacing: 200,
+                padding: 80,
+                diagramPadding: 150
+            },
+            themeVariables: {
+                fontSize: '24px',
+                fontFamily: 'Arial, sans-serif',
+                primaryColor: '#dbeafe',
+                primaryTextColor: '#000000',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#333333',
+                secondaryColor: '#d1fae5',
+                tertiaryColor: '#f0f9ff',
+                edgeLabelBackground: '#ffffff'
+            }
+        });
+        
+        // Start at 50% zoom for overview
+        window.addEventListener('load', function() {
+            setZoom(0.5);
+        });
+    </script>
+</body>
+</html>

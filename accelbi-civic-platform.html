@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccelBI - Data/AI-Forward Civic Platform Architecture</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+        
+        .controls {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .controls button {
+            display: block;
+            width: 100px;
+            margin: 5px 0;
+            padding: 8px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .controls button:hover {
+            background: #2563eb;
+        }
+        
+        .legend {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 14px;
+        }
+        
+        .legend h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .legend-line {
+            width: 40px;
+            height: 4px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        
+        .user-traffic { background: #10b981; }
+        .auth-flow { background: #f59e0b; }
+        .api-flow { background: #3b82f6; }
+        .ai-analytics { background: #a855f7; }
+        .data-flow { background: #8b5cf6; }
+        .integration-flow { background: #ec4899; }
+        .monitoring-flow { background: #6b7280; }
+        .governance-flow { background: #dc2626; }
+        
+        #diagram-container {
+            width: 5000px;
+            height: 3800px;
+            padding: 100px;
+            transform-origin: top left;
+            transition: transform 0.3s ease;
+        }
+        
+        .mermaid {
+            font-size: 24px !important;
+        }
+        
+        /* Override Mermaid's default text sizing */
+        .mermaid text {
+            font-size: 20px !important;
+            font-weight: 600 !important;
+        }
+        
+        .mermaid .nodeLabel {
+            font-size: 20px !important;
+        }
+        
+        .mermaid .edgeLabel {
+            font-size: 18px !important;
+            font-weight: bold !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="legend">
+        <h3>Flow Types</h3>
+        <div class="legend-item">
+            <div class="legend-line user-traffic"></div>
+            <span>User Traffic</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line auth-flow"></div>
+            <span>Authentication</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line api-flow"></div>
+            <span>API Calls</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line ai-analytics"></div>
+            <span>AI/Analytics</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line data-flow"></div>
+            <span>Data Processing</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line integration-flow"></div>
+            <span>External Integration</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line monitoring-flow"></div>
+            <span>Monitoring/Logs</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line governance-flow"></div>
+            <span>Governance</span>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button onclick="setZoom(0.25)">25%</button>
+        <button onclick="setZoom(0.5)">50%</button>
+        <button onclick="setZoom(0.75)">75%</button>
+        <button onclick="setZoom(1)">100%</button>
+    </div>
+    
+    <div id="diagram-container">
+        <div class="mermaid">
+%%{init: {'theme':'default', 'themeVariables': {'fontSize':'24px', 'fontFamily':'Arial', 'primaryColor':'#e8f4ff', 'primaryBorderColor':'#1166cc', 'primaryTextColor':'#000', 'lineColor':'#333', 'secondaryColor':'#f9e8ff', 'tertiaryColor':'#e0e7ff'}}}%%
+
+flowchart TB
+    subgraph CITY["<b>🏛️ EXTERNAL - CITY & PUBLIC</b>"]
+      Resident["<b>👤 Resident</b><br/>Web/Mobile"]
+      Admin["<b>👔 City Staff</b><br/>Admin Portal"]
+      Laserfiche["<b>📁 Laserfiche</b><br/>Records System"]
+      CMS["<b>🌐 City Website</b><br/>CMS"]
+      Social["<b>💬 Social</b><br/>Channels"]
+    end
+    
+    subgraph ISVOPT["<b>🎯 CURATED CIVIC ISV</b><br/>AccelBI Selects & Enhances"]
+      ZENCITY["<b>📊 Zencity</b><br/>(Analytics-Centric)<br/>OR<br/><b>📋 PublicInput</b><br/>OR<br/><b>🏛️ Granicus</b><br/>━━━━━━━━━<br/>Equity Features<br/>WCAG Compliant<br/>Notifications<br/>Project Tracking"]
+    end
+    
+    subgraph ACCELBI["<b>🧠 ACCELBI LAYER</b><br/>Data/AI-Forward Application + Analytics Depth"]
+      ANALYTICS["<b>📈 Analytics & AI</b><br/>━━━━━━━━━<br/>Demographics Dashboards<br/>Sentiment Analysis<br/>Theme Extraction<br/>Census Comparison<br/>Public Dashboards"]
+      APPCONFIG["<b>⚙️ App Configuration</b><br/>━━━━━━━━━<br/>ISV Configuration<br/>Lightweight Front-End<br/>Multilingual/SMS<br/>Export (CSV/Excel/PDF)"]
+      INTEGBI["<b>🔗 Integrations</b><br/>━━━━━━━━━<br/>SSO Implementation<br/>Laserfiche Connect<br/>Site/Social Syndication<br/>Streaming/Audit Trails"]
+      OPSPM["<b>📋 Operations & PM</b><br/>━━━━━━━━━<br/>Vendor-Managed Hosting<br/>SLOs & Instrumentation<br/>Incident Drills<br/>Tier-1/2 Support<br/>Training & RAID"]
+    end
+    
+    subgraph IBM["<b>☁️ IBM CLOUD PLATFORM</b><br/>Runtime, Data, AI & Security"]
+      subgraph VPC["<b>🔐 VPC LANDING ZONE</b>"]
+        LB["<b>⚖️ Load Balancer</b><br/>for VPC"]
+        API["<b>🌉 API Connect</b><br/>Unified Gateway"]
+        ROKS["<b>🐳 OpenShift</b><br/>on IBM Cloud"]
+        PGDB["<b>💾 PostgreSQL/Db2</b><br/>App Data"]
+      end
+      
+      subgraph DATAAI["<b>🤖 DATA & AI PLATFORM</b>"]
+        DWH["<b>📊 Db2 Warehouse</b><br/><b>watsonx.data</b><br/>━━━━━━━━━<br/>Analytics Marts<br/>Data Lakehouse"]
+        WXAI["<b>🧠 watsonx.ai</b><br/><b>Studio</b><br/>━━━━━━━━━<br/>NLP/Sentiment<br/>Topic Modeling<br/>Open-Text Analysis"]
+        WXG["<b>🎯 watsonx</b><br/><b>governance</b><br/>━━━━━━━━━<br/>Model Controls<br/>AI Governance<br/>Compliance"]
+        KCAT["<b>📚 Knowledge</b><br/><b>Catalog</b><br/>━━━━━━━━━<br/>Data Governance<br/>Metadata<br/>Lineage"]
+      end
+      
+      subgraph MESSAGING["<b>📨 MESSAGING & EVENTS</b>"]
+        ES["<b>📡 Event Streams</b><br/>Kafka<br/>━━━━━━━━━<br/>Vote/Poll Capture<br/>Audit Streams"]
+        EN["<b>📧 Event</b><br/><b>Notifications</b><br/>━━━━━━━━━<br/>SMS/Email<br/>Multilingual"]
+      end
+      
+      subgraph SECURITY["<b>🛡️ SECURITY & OPERATIONS</b>"]
+        KP["<b>🔐 Key Protect</b><br/>Hyper Protect<br/>Crypto Services"]
+        SCC["<b>⚡ Security &</b><br/>Compliance Center"]
+        MON["<b>📊 Cloud Monitoring</b><br/>Logs/Activity Tracker"]
+        FLOW["<b>🔍 Flow Logs</b><br/>Network Analysis"]
+        SSO["<b>🆔 IBM Verify</b><br/>SSO/OIDC/SAML"]
+      end
+      
+      CR["<b>📦 Container Registry</b>"]
+      CD["<b>🚀 Continuous Delivery</b>"]
+    end
+    
+    %% USER TRAFFIC - Thick Green Lines
+    Resident ==>|"<b>HTTPS/TLS</b><br/>PUBLIC ACCESS"| LB
+    Admin ==>|"<b>HTTPS/TLS</b><br/>ADMIN ACCESS"| LB
+    
+    %% LOAD BALANCER ROUTING - Blue Lines
+    LB ==>|"<b>CIVIC APP</b>"| ZENCITY
+    LB ==>|"<b>API GATEWAY</b>"| API
+    LB ==>|"<b>DASHBOARDS</b>"| ANALYTICS
+    
+    %% AUTHENTICATION - Orange Lines
+    ZENCITY -.->|"<b>OIDC/SAML</b>"| SSO
+    SSO -.->|"<b>TOKEN</b>"| ZENCITY
+    ANALYTICS -.->|"<b>AUTH</b>"| SSO
+    
+    %% AI/ANALYTICS FLOWS - Thick Purple Lines
+    ANALYTICS ===>|"<b>AI PROCESSING</b>"| WXAI
+    WXAI ===>|"<b>INSIGHTS</b>"| DWH
+    DWH ===>|"<b>DASHBOARDS</b>"| ANALYTICS
+    ANALYTICS ===>|"<b>PUBLIC DATA</b>"| ZENCITY
+    
+    %% DATA GOVERNANCE - Red Lines
+    WXAI -..->|"<b>MODEL GOVERNANCE</b>"| WXG
+    WXG -..->|"<b>COMPLIANCE</b>"| SCC
+    DWH -..->|"<b>METADATA</b>"| KCAT
+    KCAT -..->|"<b>LINEAGE</b>"| ANALYTICS
+    
+    %% DATA PROCESSING - Purple Lines
+    ZENCITY ==>|"<b>APP DATA</b>"| API
+    API ==>|"<b>BACKEND</b>"| ROKS
+    ROKS ==>|"<b>PERSIST</b>"| PGDB
+    PGDB ==>|"<b>ETL</b>"| DWH
+    
+    %% EVENT STREAMING - Blue Lines
+    ROKS ==>|"<b>EVENTS</b>"| ES
+    ES ==>|"<b>STREAM</b>"| WXAI
+    ES ==>|"<b>AUDIT</b>"| DWH
+    INTEGBI ==>|"<b>CAPTURE</b>"| ES
+    
+    %% NOTIFICATIONS - Green Lines
+    APPCONFIG ==>|"<b>TRIGGER</b>"| EN
+    EN ==>|"<b>SMS/Email</b><br/>MULTILINGUAL"| Resident
+    ZENCITY ==>|"<b>NOTIFY</b>"| EN
+    
+    %% EXTERNAL INTEGRATIONS - Magenta Lines
+    INTEGBI ===>|"<b>INTEGRATION</b>"| API
+    API ===>|"<b>REST/JSON</b><br/>RECORDS"| Laserfiche
+    API ===>|"<b>REST/JSON</b><br/>CONTENT"| CMS
+    API ===>|"<b>REST/JSON</b><br/>SOCIAL"| Social
+    
+    %% ACCELBI OPERATIONS - Orange Thick
+    APPCONFIG ===>|"<b>CONFIGURE</b>"| ZENCITY
+    OPSPM ===>|"<b>MANAGE</b>"| VPC
+    OPSPM ===>|"<b>MONITOR</b>"| MON
+    OPSPM ===>|"<b>INCIDENTS</b>"| SCC
+    
+    %% SECURITY - Red Dashed Lines
+    KP -..->|"<b>ENCRYPT</b>"| PGDB
+    KP -..->|"<b>ENCRYPT</b>"| DWH
+    SCC -..->|"<b>POLICIES</b>"| ROKS
+    
+    %% MONITORING - Gray Thin Lines
+    ROKS -.->|"metrics"| MON
+    API -.->|"logs"| MON
+    LB -.->|"flow"| FLOW
+    FLOW -.->|"analyze"| OPSPM
+    
+    %% CI/CD - Thin Blue Lines
+    CD -.->|"images"| CR
+    CD -.->|"deploy"| ROKS
+    APPCONFIG -.->|"config"| CD
+    
+    classDef city fill:#fef3c7,stroke:#f59e0b,stroke-width:3px,color:#000
+    classDef isv fill:#e0e7ff,stroke:#4f46e5,stroke-width:3px,color:#312e81
+    classDef accelbi fill:#f9e8ff,stroke:#a855f7,stroke-width:4px,color:#6b21a8
+    classDef ibm fill:#dbeafe,stroke:#2563eb,stroke-width:3px,color:#1e3a8a
+    classDef dataai fill:#f3e8ff,stroke:#9333ea,stroke-width:4px,color:#581c87
+    classDef security fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#7f1d1d
+    classDef messaging fill:#ecfdf5,stroke:#10b981,stroke-width:3px,color:#064e3b
+    
+    class Resident,Admin,Laserfiche,CMS,Social city
+    class ZENCITY isv
+    class ANALYTICS,APPCONFIG,INTEGBI,OPSPM accelbi
+    class LB,API,ROKS,PGDB,CR,CD ibm
+    class DWH,WXAI,WXG,KCAT dataai
+    class KP,SCC,MON,FLOW,SSO security
+    class ES,EN messaging
+        </div>
+    </div>
+    
+    <script>
+        function setZoom(scale) {
+            document.getElementById('diagram-container').style.transform = `scale(${scale})`;
+        }
+        
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                rankSpacing: 300,
+                nodeSpacing: 200,
+                padding: 80,
+                diagramPadding: 150
+            },
+            themeVariables: {
+                fontSize: '24px',
+                fontFamily: 'Arial, sans-serif',
+                primaryColor: '#dbeafe',
+                primaryTextColor: '#000000',
+                primaryBorderColor: '#2563eb',
+                lineColor: '#333333',
+                secondaryColor: '#f9e8ff',
+                tertiaryColor: '#e0e7ff',
+                edgeLabelBackground: '#ffffff'
+            }
+        });
+        
+        // Start at 50% zoom for overview
+        window.addEventListener('load', function() {
+            setZoom(0.5);
+        });
+    </script>
+</body>
+</html>

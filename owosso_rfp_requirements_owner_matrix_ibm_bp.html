@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<title>Owosso RFP — Requirements → Ownership Matrix (IBM Cloud + Business Partner) — 2025-09-19</title>
+<style>
+      body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#ffffff;color:#111}
+      header{padding:24px 28px;border-bottom:1px solid #e5e7eb}
+      h1{margin:0;font-size:22px}
+      .sub{color:#374151;font-size:14px;margin-top:4px}
+      .tabs{display:flex;gap:8px;padding:14px 28px;border-bottom:1px solid #e5e7eb;background:#fafafa;flex-wrap:wrap}
+      .tab{padding:10px 14px;border:1px solid #d1d5db;border-radius:8px;background:#fff;cursor:pointer;font-weight:700}
+      .tab.active{background:#111;color:#fff;border-color:#111}
+      .panel{display:none;padding:22px 28px}
+      .panel.active{display:block}
+      table{border-collapse:separate;border-spacing:0;width:100%;font-size:14px}
+      th,td{border-right:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;padding:10px 12px;vertical-align:top}
+      th:first-child,td:first-child{border-left:1px solid #e5e7eb}
+      thead th{position:sticky;top:0;background:#f8fafc;z-index:1}
+      tbody tr:nth-child(odd){background:#fcfcff}
+      .cat{background:#f3f4f6;font-weight:700}
+      .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}
+      .M{background:#fee2e2;color:#991b1b}
+      .D{background:#fef3c7;color:#92400e}
+      .O{background:#e5e7eb;color:#111827}
+      .muted{color:#6b7280}
+      .foot{margin-top:18px;color:#374151;font-size:12px}
+      .notes{font-size:13px;color:#374151;margin-top:10px}
+      .dl{font-weight:700}
+      .hdrgrid{display:grid;grid-template-columns: 2fr 1fr;gap:8px;align-items:baseline}
+      .tagline{color:#111;font-weight:700}
+      .chip{background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;border-radius:6px;padding:2px 6px;margin-right:6px}
+    </style>
+<script>
+      function activateTab(name){
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+        document.querySelector(`.tab[data-name="${name}"]`).classList.add('active');
+        document.getElementById('panel-'+name).classList.add('active');
+      }
+      window.addEventListener('DOMContentLoaded',()=>{ activateTab('Perficient'); });
+    </script>
+</head><body>
+<header class='hdrgrid'>
+<div><h1>Owosso Community Engagement Platform — Requirements → Ownership Matrix</h1>
+<div class='sub'>Prepared for internal IBM Cloud & Partner alignment • Version 2025-09-19</div></div>
+<div class='sub'>Owner of submission and services: <span class='dl'>Business Partner (prime)</span>. IBM Cloud is delivered through the partner.</div>
+</header>
+<div class='tabs'>
+<button class='tab' data-name='Perficient' onclick="activateTab('Perficient')">Perficient</button>
+<button class='tab' data-name='GlassHouse Systems' onclick="activateTab('GlassHouse Systems')">GlassHouse Systems</button>
+<button class='tab' data-name='AccelBI' onclick="activateTab('AccelBI')">AccelBI</button>
+<button class='tab' data-name='Lantrasoft' onclick="activateTab('Lantrasoft')">Lantrasoft</button>
+</div>
+<section class='panel' id='panel-Perficient'>
+<div class='tagline'>Perficient — Prime Application + Systems Integrator (UX, VPAT, municipal SI)</div>
+<div class='notes'>Differentiators: <span class='chip'>Front-end &amp; microservices ownership; strong WCAG/VPAT discipline.</span> <span class='chip'>Laserfiche, CMS, social integrations via API Connect; SSO with IBM Verify/App ID.</span> <span class='chip'>SaaS operations on IBM Cloud with runbooks, uptime reporting, and security evidence.</span></div>
+<div style='margin-top:12px;overflow:auto'>
+<table>
+<thead><tr>
+<th style='width:56px'>ID</th>
+<th style='width:170px'>Category</th>
+<th>Requirement</th>
+<th style='width:120px'>Priority</th>
+<th style='width:220px'>IBM Cloud scope (IaaS/PaaS/SaaS)</th>
+<th style='width:300px'>IBM Cloud services (delivered via partner)</th>
+<th style='width:380px'>Business Partner must deliver (as vendor of record)</th>
+<th style='width:260px'>Evidence / Artifacts</th>
+</tr></thead><tbody>
+<tr><td colspan='8' class='cat'>Engagement Tools</td></tr>
+<tr>
+<td>1</td>
+<td>Engagement Tools</td>
+<td>Online surveys with customizable question types (multiple‑choice, open‑ended, ranking).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS/SaaS platform support for backend services; secure runtime; scalable data store.</td>
+<td class='muted'>OpenShift (ROKS), API Connect, Db2 or Databases for PostgreSQL; Cloud Load Balancer.</td>
+<td>Provide or configure the survey application layer (native or ISV); ensure UX quality, configurability, validation, and performance under concurrent load.</td>
+<td class='muted'>Working survey module with admin configuration; load test summary; UI walkthrough.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Engagement Tools</td>
+<td>Digital polling/voting tools for quick feedback.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for APIs and data; event capture.</td>
+<td class='muted'>API Connect, Event Streams (Kafka), Db2/Db2 Warehouse.</td>
+<td>Implement polling/voting flows; ensure anti‑ballot stuffing controls and auditability.</td>
+<td class='muted'>Demonstrate vote workflow, rate‑limit &amp; fraud controls, and audit trail.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Engagement Tools</td>
+<td>Integrates AI into data gathering and analysis.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for AI services &amp; governance.</td>
+<td class='muted'>watsonx.ai Studio; watsonx.governance; Knowledge Catalog.</td>
+<td>Design NLP (sentiment/themes) pipeline; register models/runs; document guardrails and bias testing.</td>
+<td class='muted'>Model cards &amp; governance records; sample outputs; risk controls.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Engagement Tools</td>
+<td>Interactive mapping for geographic feedback (pin‑on‑map).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS runtime and API mediation for map SDKs.</td>
+<td class='muted'>API Connect; OpenShift (hosting of map components).</td>
+<td>Provide mapping UX and storage of geo‑responses; license/operate chosen map SDK; ensure WCAG compliance.</td>
+<td class='muted'>Live demo with map interactions; WCAG checks for map controls.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Engagement Tools</td>
+<td>Gamification (points/rewards).</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime and data store; optional eventing.</td>
+<td class='muted'>OpenShift; Db2; Event Streams.</td>
+<td>If offered, design rules, privacy‑safe leaderboards/badges; opt‑in controls.</td>
+<td class='muted'>Feature spec; privacy note; sample leaderboard.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Equity &amp; Accessibility</td></tr>
+<tr>
+<td>6</td>
+<td>Equity &amp; Accessibility</td>
+<td>ADA/WCAG 2.1 AA accessibility compliance.</td>
+<td><span class='badge M'>M</span></td>
+<td>N/A – app/UI responsibility (IBM provides hosting and security).</td>
+<td class='muted'>—</td>
+<td>Own VPAT and perform WCAG 2.1 AA audits across all resident‑facing pages (web/mobile).</td>
+<td class='muted'>Current VPAT; 3rd‑party audit summary; remediation log.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Equity &amp; Accessibility</td>
+<td>Multilingual support.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS messaging; runtime.</td>
+<td class='muted'>Event Notifications (email/SMS) for multilingual comms; OpenShift for language packs/services.</td>
+<td>Deliver locale strategy, translation workflow, RTL support, and language toggles.</td>
+<td class='muted'>Language matrix; sample localized UI; translation QA process.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Equity &amp; Accessibility</td>
+<td>SMS/text message input for residents without internet access.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging &amp; API gateway.</td>
+<td class='muted'>Event Notifications (SMS), API Connect.</td>
+<td>Enable SMS intake with verification, consent logging, and routing into the same data pipeline.</td>
+<td class='muted'>SMS journey diagram; consent &amp; opt‑out records; test transcripts.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Equity &amp; Accessibility</td>
+<td>Capture paper survey responses into the system.</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime &amp; API gateway for ingestion.</td>
+<td class='muted'>API Connect; Object Storage (optional) for scanned artifacts.</td>
+<td>Define manual entry/scanning process; double‑entry QC; chain‑of‑custody to Laserfiche.</td>
+<td class='muted'>Procedure &amp; training; sample scanned record; QC stats.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Analytics &amp; Reporting</td></tr>
+<tr>
+<td>10</td>
+<td>Analytics &amp; Reporting</td>
+<td>Real‑time analytics dashboards.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS analytics &amp; eventing; scalable store.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data; Event Streams.</td>
+<td>Publish city &amp; public dashboards; refresh under SLA; document KPI definitions.</td>
+<td class='muted'>Dashboard links; SLA metrics; KPI catalog.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Analytics &amp; Reporting</td>
+<td>Demographics tracking of respondents (age, ZIP, gender, etc.).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data &amp; governance.</td>
+<td class='muted'>Db2/Db2 Warehouse; Knowledge Catalog for metadata/lineage.</td>
+<td>Collect demographics with consent; privacy minimization; schema &amp; retention controls.</td>
+<td class='muted'>Data dictionary; consent text; retention policy.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Analytics &amp; Reporting</td>
+<td>Sentiment analysis across open‑text responses.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS AI &amp; governance.</td>
+<td class='muted'>watsonx.ai; watsonx.governance.</td>
+<td>Implement NLP pipeline; measure accuracy; document model drift monitoring.</td>
+<td class='muted'>Evaluation report; governance artifacts; alerting rules.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Analytics &amp; Reporting</td>
+<td>Compare engagement to census benchmarks (representativeness).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS analytics store &amp; compute.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data.</td>
+<td>Load ACS/census sets; define weighting/normalization; publish equity lenses.</td>
+<td class='muted'>Benchmark workbook; sampling/weighting method.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Analytics &amp; Reporting</td>
+<td>Exports to Excel/CSV/PDF.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data services &amp; API mediation.</td>
+<td class='muted'>Db2 Warehouse; API Connect (download endpoints).</td>
+<td>Implement role‑scoped exports; log access; ensure PII minimization in exports.</td>
+<td class='muted'>Export samples; access logs; PII minimization note.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Transparency &amp; Public Access</td></tr>
+<tr>
+<td>15</td>
+<td>Transparency &amp; Public Access</td>
+<td>Public dashboards with aggregated results.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting &amp; cache; CDN option (if used).</td>
+<td class='muted'>OpenShift; (optional) CDN via IBM Cloud Internet Services if desired.</td>
+<td>Deliver public site with uptime &amp; cache strategy; clear methodology notes on charts.</td>
+<td class='muted'>Public URL; uptime SLO; methodology page.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Transparency &amp; Public Access</td>
+<td>Residents track project updates and see feedback outcomes.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS runtime and API.</td>
+<td class='muted'>OpenShift; API Connect.</td>
+<td>Provide project pages, update feeds, and ‘you said / we did’ traceability.</td>
+<td class='muted'>Sample project page; update history; notification hooks.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Transparency &amp; Public Access</td>
+<td>Email notification system for topic updates.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging.</td>
+<td class='muted'>Event Notifications.</td>
+<td>Configure subscriptions, double‑opt‑in, bounce handling, and digest settings.</td>
+<td class='muted'>Comms policy; bounce &amp; complaint handling metrics.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Security &amp; Privacy</td></tr>
+<tr>
+<td>18</td>
+<td>Security &amp; Privacy</td>
+<td>Encryption in transit and at rest.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS security &amp; KMS; TLS termination.</td>
+<td class='muted'>Key Protect / Hyper Protect Crypto Services; Load Balancer (TLS).</td>
+<td>Enforce app‑level TLS; use CMKs for database/warehouse; rotate keys; document crypto posture.</td>
+<td class='muted'>KMS key plan; TLS cipher list; evidence of encryption at rest.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Security &amp; Privacy</td>
+<td>Role-based access for City staff.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and access services.</td>
+<td class='muted'>IBM Verify / App ID; IBM Cloud IAM (service policies).</td>
+<td>Design RBAC/ABAC in the app; SCIM/user provisioning; least‑privilege roles; admin audit.</td>
+<td class='muted'>RBAC matrix; provisioning SOP; quarterly access review plan.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Security &amp; Privacy</td>
+<td>GDPR/CCPA‑style privacy protections.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS compliance tooling and evidence.</td>
+<td class='muted'>Security and Compliance Center (controls, evidence); Activity Tracker (audit).</td>
+<td>Publish privacy policy, consent, DSAR/export/erasure processes; logging/audit trails.</td>
+<td class='muted'>Privacy policy; DSAR SOP; audit samples.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Security &amp; Privacy</td>
+<td>Ability to anonymize sensitive resident data.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS data tooling; analytics store.</td>
+<td class='muted'>Db2 Warehouse functions; Knowledge Catalog tags/classifications.</td>
+<td>Implement de‑identification/anonymization; document re‑identification risk.</td>
+<td class='muted'>De‑identification method; test before/after samples.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Technical</td></tr>
+<tr>
+<td>T1</td>
+<td>Technical</td>
+<td>Cloud‑based SaaS; vendor‑managed hosting, patches, and upgrades.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS foundation for SaaS delivery; multi‑zone HA.</td>
+<td class='muted'>OpenShift (ROKS) multi‑zone; Container Registry; Continuous Delivery; Monitoring/Logs.</td>
+<td>Be the SaaS vendor of record; operate, patch, upgrade; provide SLA and incident communications.</td>
+<td class='muted'>SaaS responsibility matrix; patch/upgrade calendar; maintenance windows.</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Technical</td>
+<td>Supports concurrent logins across multiple departments.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and runtime scalability.</td>
+<td class='muted'>IBM Verify/App ID; OpenShift autoscaling.</td>
+<td>Design tenancy, throttling, and concurrency limits; run load tests; document SSO realms/spaces.</td>
+<td class='muted'>Load test results; tenancy model; SSO configuration.</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Technical</td>
+<td>Works on iOS and Android mobile devices; no client‑side installs.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting and content delivery.</td>
+<td class='muted'>OpenShift; API Connect; (optional) CDN.</td>
+<td>Deliver responsive web app; verify mobile browser compatibility; avoid native installs.</td>
+<td class='muted'>Mobile compatibility matrix; device/browser QA results.</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Technical</td>
+<td>Uptime SLA of 99.9%.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS multi‑zone design and observability.</td>
+<td class='muted'>ROKS multi‑zone; Cloud Monitoring; Cloud Logs/Activity Tracker; Flow Logs.</td>
+<td>Engineer multi‑zone ROKS and SRE runbooks to meet ≥99.9% uptime; publish monthly SLO reports.</td>
+<td class='muted'>SLA doc; SLO dashboard; sample postmortem.</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>Technical</td>
+<td>Integrates with City website and social media platforms; Laserfiche.</td>
+<td><span class='badge M'>M</span></td>
+<td>API gateway and integration services.</td>
+<td class='muted'>API Connect; Event Notifications; Event Streams.</td>
+<td>Provide production‑grade Laserfiche, CMS, and social integration via API Connect with audit trails.</td>
+<td class='muted'>Integration runbooks; API specs; audit samples.</td>
+</tr>
+</tbody></table></div>
+<div class='foot'>Notes: All external integrations flow through API Connect; encryption uses CMKs (Key Protect/Hyper Protect); observability via Cloud Monitoring, Cloud Logs, and Activity Tracker; multi‑zone ROKS for ≥99.9% availability.</div>
+</section>
+<section class='panel' id='panel-GlassHouse Systems'>
+<div class='tagline'>GlassHouse Systems — Infra‑security anchor + Managed SecOps; curated ISV for app layer</div>
+<div class='notes'>Differentiators: <span class='chip'>Leads landing zone, multi‑zone ROKS, IAM, network segmentation, and KMS.</span> <span class='chip'>24×7 SOC/NOC, vuln/patch pipeline, backup/restore validation, compliance evidence (SCC).</span> <span class='chip'>Coordinates and operates a mature Civic ISV on IBM Cloud; integrates analytics &amp; records.</span></div>
+<div style='margin-top:12px;overflow:auto'>
+<table>
+<thead><tr>
+<th style='width:56px'>ID</th>
+<th style='width:170px'>Category</th>
+<th>Requirement</th>
+<th style='width:120px'>Priority</th>
+<th style='width:220px'>IBM Cloud scope (IaaS/PaaS/SaaS)</th>
+<th style='width:300px'>IBM Cloud services (delivered via partner)</th>
+<th style='width:380px'>Business Partner must deliver (as vendor of record)</th>
+<th style='width:260px'>Evidence / Artifacts</th>
+</tr></thead><tbody>
+<tr><td colspan='8' class='cat'>Engagement Tools</td></tr>
+<tr>
+<td>1</td>
+<td>Engagement Tools</td>
+<td>Online surveys with customizable question types (multiple‑choice, open‑ended, ranking).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS/SaaS platform support for backend services; secure runtime; scalable data store.</td>
+<td class='muted'>OpenShift (ROKS), API Connect, Db2 or Databases for PostgreSQL; Cloud Load Balancer.</td>
+<td>Provide or configure the survey application layer (native or ISV); ensure UX quality, configurability, validation, and performance under concurrent load.</td>
+<td class='muted'>Working survey module with admin configuration; load test summary; UI walkthrough.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Engagement Tools</td>
+<td>Digital polling/voting tools for quick feedback.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for APIs and data; event capture.</td>
+<td class='muted'>API Connect, Event Streams (Kafka), Db2/Db2 Warehouse.</td>
+<td>Implement polling/voting flows; ensure anti‑ballot stuffing controls and auditability.</td>
+<td class='muted'>Demonstrate vote workflow, rate‑limit &amp; fraud controls, and audit trail.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Engagement Tools</td>
+<td>Integrates AI into data gathering and analysis.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for AI services &amp; governance.</td>
+<td class='muted'>watsonx.ai Studio; watsonx.governance; Knowledge Catalog.</td>
+<td>Design NLP (sentiment/themes) pipeline; register models/runs; document guardrails and bias testing.</td>
+<td class='muted'>Model cards &amp; governance records; sample outputs; risk controls.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Engagement Tools</td>
+<td>Interactive mapping for geographic feedback (pin‑on‑map).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS runtime and API mediation for map SDKs.</td>
+<td class='muted'>API Connect; OpenShift (hosting of map components).</td>
+<td>Provide mapping UX and storage of geo‑responses; license/operate chosen map SDK; ensure WCAG compliance.</td>
+<td class='muted'>Live demo with map interactions; WCAG checks for map controls.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Engagement Tools</td>
+<td>Gamification (points/rewards).</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime and data store; optional eventing.</td>
+<td class='muted'>OpenShift; Db2; Event Streams.</td>
+<td>If offered, design rules, privacy‑safe leaderboards/badges; opt‑in controls.</td>
+<td class='muted'>Feature spec; privacy note; sample leaderboard.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Equity &amp; Accessibility</td></tr>
+<tr>
+<td>6</td>
+<td>Equity &amp; Accessibility</td>
+<td>ADA/WCAG 2.1 AA accessibility compliance.</td>
+<td><span class='badge M'>M</span></td>
+<td>N/A – app/UI responsibility (IBM provides hosting and security).</td>
+<td class='muted'>—</td>
+<td>Coordinate VPAT/audits with the chosen ISV; verify accessibility of hosted components and ingress/egress paths.</td>
+<td class='muted'>Current VPAT; 3rd‑party audit summary; remediation log.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Equity &amp; Accessibility</td>
+<td>Multilingual support.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS messaging; runtime.</td>
+<td class='muted'>Event Notifications (email/SMS) for multilingual comms; OpenShift for language packs/services.</td>
+<td>Deliver locale strategy, translation workflow, RTL support, and language toggles.</td>
+<td class='muted'>Language matrix; sample localized UI; translation QA process.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Equity &amp; Accessibility</td>
+<td>SMS/text message input for residents without internet access.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging &amp; API gateway.</td>
+<td class='muted'>Event Notifications (SMS), API Connect.</td>
+<td>Enable SMS intake with verification, consent logging, and routing into the same data pipeline.</td>
+<td class='muted'>SMS journey diagram; consent &amp; opt‑out records; test transcripts.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Equity &amp; Accessibility</td>
+<td>Capture paper survey responses into the system.</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime &amp; API gateway for ingestion.</td>
+<td class='muted'>API Connect; Object Storage (optional) for scanned artifacts.</td>
+<td>Define manual entry/scanning process; double‑entry QC; chain‑of‑custody to Laserfiche.</td>
+<td class='muted'>Procedure &amp; training; sample scanned record; QC stats.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Analytics &amp; Reporting</td></tr>
+<tr>
+<td>10</td>
+<td>Analytics &amp; Reporting</td>
+<td>Real‑time analytics dashboards.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS analytics &amp; eventing; scalable store.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data; Event Streams.</td>
+<td>Publish city &amp; public dashboards; refresh under SLA; document KPI definitions.</td>
+<td class='muted'>Dashboard links; SLA metrics; KPI catalog.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Analytics &amp; Reporting</td>
+<td>Demographics tracking of respondents (age, ZIP, gender, etc.).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data &amp; governance.</td>
+<td class='muted'>Db2/Db2 Warehouse; Knowledge Catalog for metadata/lineage.</td>
+<td>Collect demographics with consent; privacy minimization; schema &amp; retention controls.</td>
+<td class='muted'>Data dictionary; consent text; retention policy.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Analytics &amp; Reporting</td>
+<td>Sentiment analysis across open‑text responses.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS AI &amp; governance.</td>
+<td class='muted'>watsonx.ai; watsonx.governance.</td>
+<td>Implement NLP pipeline; measure accuracy; document model drift monitoring.</td>
+<td class='muted'>Evaluation report; governance artifacts; alerting rules.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Analytics &amp; Reporting</td>
+<td>Compare engagement to census benchmarks (representativeness).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS analytics store &amp; compute.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data.</td>
+<td>Load ACS/census sets; define weighting/normalization; publish equity lenses.</td>
+<td class='muted'>Benchmark workbook; sampling/weighting method.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Analytics &amp; Reporting</td>
+<td>Exports to Excel/CSV/PDF.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data services &amp; API mediation.</td>
+<td class='muted'>Db2 Warehouse; API Connect (download endpoints).</td>
+<td>Implement role‑scoped exports; log access; ensure PII minimization in exports.</td>
+<td class='muted'>Export samples; access logs; PII minimization note.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Transparency &amp; Public Access</td></tr>
+<tr>
+<td>15</td>
+<td>Transparency &amp; Public Access</td>
+<td>Public dashboards with aggregated results.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting &amp; cache; CDN option (if used).</td>
+<td class='muted'>OpenShift; (optional) CDN via IBM Cloud Internet Services if desired.</td>
+<td>Deliver public site with uptime &amp; cache strategy; clear methodology notes on charts.</td>
+<td class='muted'>Public URL; uptime SLO; methodology page.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Transparency &amp; Public Access</td>
+<td>Residents track project updates and see feedback outcomes.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS runtime and API.</td>
+<td class='muted'>OpenShift; API Connect.</td>
+<td>Provide project pages, update feeds, and ‘you said / we did’ traceability.</td>
+<td class='muted'>Sample project page; update history; notification hooks.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Transparency &amp; Public Access</td>
+<td>Email notification system for topic updates.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging.</td>
+<td class='muted'>Event Notifications.</td>
+<td>Configure subscriptions, double‑opt‑in, bounce handling, and digest settings.</td>
+<td class='muted'>Comms policy; bounce &amp; complaint handling metrics.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Security &amp; Privacy</td></tr>
+<tr>
+<td>18</td>
+<td>Security &amp; Privacy</td>
+<td>Encryption in transit and at rest.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS security &amp; KMS; TLS termination.</td>
+<td class='muted'>Key Protect / Hyper Protect Crypto Services; Load Balancer (TLS).</td>
+<td>Engineer TLS, CMKs (Key Protect/Hyper Protect), and encryption policies; document crypto evidence in SCC.</td>
+<td class='muted'>KMS key plan; TLS cipher list; evidence of encryption at rest.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Security &amp; Privacy</td>
+<td>Role-based access for City staff.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and access services.</td>
+<td class='muted'>IBM Verify / App ID; IBM Cloud IAM (service policies).</td>
+<td>Design RBAC/ABAC in the app; SCIM/user provisioning; least‑privilege roles; admin audit.</td>
+<td class='muted'>RBAC matrix; provisioning SOP; quarterly access review plan.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Security &amp; Privacy</td>
+<td>GDPR/CCPA‑style privacy protections.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS compliance tooling and evidence.</td>
+<td class='muted'>Security and Compliance Center (controls, evidence); Activity Tracker (audit).</td>
+<td>Publish privacy policy, consent, DSAR/export/erasure processes; logging/audit trails.</td>
+<td class='muted'>Privacy policy; DSAR SOP; audit samples.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Security &amp; Privacy</td>
+<td>Ability to anonymize sensitive resident data.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS data tooling; analytics store.</td>
+<td class='muted'>Db2 Warehouse functions; Knowledge Catalog tags/classifications.</td>
+<td>Implement de‑identification/anonymization; document re‑identification risk.</td>
+<td class='muted'>De‑identification method; test before/after samples.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Technical</td></tr>
+<tr>
+<td>T1</td>
+<td>Technical</td>
+<td>Cloud‑based SaaS; vendor‑managed hosting, patches, and upgrades.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS foundation for SaaS delivery; multi‑zone HA.</td>
+<td class='muted'>OpenShift (ROKS) multi‑zone; Container Registry; Continuous Delivery; Monitoring/Logs.</td>
+<td>Act as SaaS operator of record; enforce change control, patching, and DR; maintain compliance evidence.</td>
+<td class='muted'>SaaS responsibility matrix; patch/upgrade calendar; maintenance windows.</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Technical</td>
+<td>Supports concurrent logins across multiple departments.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and runtime scalability.</td>
+<td class='muted'>IBM Verify/App ID; OpenShift autoscaling.</td>
+<td>Design tenancy, throttling, and concurrency limits; run load tests; document SSO realms/spaces.</td>
+<td class='muted'>Load test results; tenancy model; SSO configuration.</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Technical</td>
+<td>Works on iOS and Android mobile devices; no client‑side installs.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting and content delivery.</td>
+<td class='muted'>OpenShift; API Connect; (optional) CDN.</td>
+<td>Deliver responsive web app; verify mobile browser compatibility; avoid native installs.</td>
+<td class='muted'>Mobile compatibility matrix; device/browser QA results.</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Technical</td>
+<td>Uptime SLA of 99.9%.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS multi‑zone design and observability.</td>
+<td class='muted'>ROKS multi‑zone; Cloud Monitoring; Cloud Logs/Activity Tracker; Flow Logs.</td>
+<td>Own SLA; publish SLOs &amp; monthly uptime; drill incident response; provide postmortems.</td>
+<td class='muted'>SLA doc; SLO dashboard; sample postmortem.</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>Technical</td>
+<td>Integrates with City website and social media platforms; Laserfiche.</td>
+<td><span class='badge M'>M</span></td>
+<td>API gateway and integration services.</td>
+<td class='muted'>API Connect; Event Notifications; Event Streams.</td>
+<td>Build/maintain connectors; adhere to gateway policies; ensure auditability and rate limits.</td>
+<td class='muted'>Integration runbooks; API specs; audit samples.</td>
+</tr>
+</tbody></table></div>
+<div class='foot'>Notes: All external integrations flow through API Connect; encryption uses CMKs (Key Protect/Hyper Protect); observability via Cloud Monitoring, Cloud Logs, and Activity Tracker; multi‑zone ROKS for ≥99.9% availability.</div>
+</section>
+<section class='panel' id='panel-AccelBI'>
+<div class='tagline'>AccelBI — Data/AI‑forward app + analytics depth; curated ISV for UX velocity</div>
+<div class='notes'>Differentiators: <span class='chip'>Watsonx‑based sentiment/topic modeling; census representativeness and equity lenses.</span> <span class='chip'>Public dashboards backed by Db2 Warehouse / watsonx.data; governed with watsonx.governance and Knowledge Catalog.</span> <span class='chip'>Configures ISV or light front‑end; maintains vendor‑managed hosting and training/support.</span></div>
+<div style='margin-top:12px;overflow:auto'>
+<table>
+<thead><tr>
+<th style='width:56px'>ID</th>
+<th style='width:170px'>Category</th>
+<th>Requirement</th>
+<th style='width:120px'>Priority</th>
+<th style='width:220px'>IBM Cloud scope (IaaS/PaaS/SaaS)</th>
+<th style='width:300px'>IBM Cloud services (delivered via partner)</th>
+<th style='width:380px'>Business Partner must deliver (as vendor of record)</th>
+<th style='width:260px'>Evidence / Artifacts</th>
+</tr></thead><tbody>
+<tr><td colspan='8' class='cat'>Engagement Tools</td></tr>
+<tr>
+<td>1</td>
+<td>Engagement Tools</td>
+<td>Online surveys with customizable question types (multiple‑choice, open‑ended, ranking).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS/SaaS platform support for backend services; secure runtime; scalable data store.</td>
+<td class='muted'>OpenShift (ROKS), API Connect, Db2 or Databases for PostgreSQL; Cloud Load Balancer.</td>
+<td>Provide or configure the survey application layer (native or ISV); ensure UX quality, configurability, validation, and performance under concurrent load.</td>
+<td class='muted'>Working survey module with admin configuration; load test summary; UI walkthrough.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Engagement Tools</td>
+<td>Digital polling/voting tools for quick feedback.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for APIs and data; event capture.</td>
+<td class='muted'>API Connect, Event Streams (Kafka), Db2/Db2 Warehouse.</td>
+<td>Implement polling/voting flows; ensure anti‑ballot stuffing controls and auditability.</td>
+<td class='muted'>Demonstrate vote workflow, rate‑limit &amp; fraud controls, and audit trail.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Engagement Tools</td>
+<td>Integrates AI into data gathering and analysis.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for AI services &amp; governance.</td>
+<td class='muted'>watsonx.ai Studio; watsonx.governance; Knowledge Catalog.</td>
+<td>Implement watsonx.ai NLP with topic/sentiment models; register runs and controls in watsonx.governance.</td>
+<td class='muted'>Model cards &amp; governance records; sample outputs; risk controls.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Engagement Tools</td>
+<td>Interactive mapping for geographic feedback (pin‑on‑map).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS runtime and API mediation for map SDKs.</td>
+<td class='muted'>API Connect; OpenShift (hosting of map components).</td>
+<td>Provide mapping UX and storage of geo‑responses; license/operate chosen map SDK; ensure WCAG compliance.</td>
+<td class='muted'>Live demo with map interactions; WCAG checks for map controls.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Engagement Tools</td>
+<td>Gamification (points/rewards).</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime and data store; optional eventing.</td>
+<td class='muted'>OpenShift; Db2; Event Streams.</td>
+<td>If offered, design rules, privacy‑safe leaderboards/badges; opt‑in controls.</td>
+<td class='muted'>Feature spec; privacy note; sample leaderboard.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Equity &amp; Accessibility</td></tr>
+<tr>
+<td>6</td>
+<td>Equity &amp; Accessibility</td>
+<td>ADA/WCAG 2.1 AA accessibility compliance.</td>
+<td><span class='badge M'>M</span></td>
+<td>N/A – app/UI responsibility (IBM provides hosting and security).</td>
+<td class='muted'>—</td>
+<td>Own VPAT and end‑to‑end accessibility; run audits across web/mobile; correct defects prior to go‑live.</td>
+<td class='muted'>Current VPAT; 3rd‑party audit summary; remediation log.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Equity &amp; Accessibility</td>
+<td>Multilingual support.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS messaging; runtime.</td>
+<td class='muted'>Event Notifications (email/SMS) for multilingual comms; OpenShift for language packs/services.</td>
+<td>Deliver locale strategy, translation workflow, RTL support, and language toggles.</td>
+<td class='muted'>Language matrix; sample localized UI; translation QA process.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Equity &amp; Accessibility</td>
+<td>SMS/text message input for residents without internet access.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging &amp; API gateway.</td>
+<td class='muted'>Event Notifications (SMS), API Connect.</td>
+<td>Enable SMS intake with verification, consent logging, and routing into the same data pipeline.</td>
+<td class='muted'>SMS journey diagram; consent &amp; opt‑out records; test transcripts.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Equity &amp; Accessibility</td>
+<td>Capture paper survey responses into the system.</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime &amp; API gateway for ingestion.</td>
+<td class='muted'>API Connect; Object Storage (optional) for scanned artifacts.</td>
+<td>Define manual entry/scanning process; double‑entry QC; chain‑of‑custody to Laserfiche.</td>
+<td class='muted'>Procedure &amp; training; sample scanned record; QC stats.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Analytics &amp; Reporting</td></tr>
+<tr>
+<td>10</td>
+<td>Analytics &amp; Reporting</td>
+<td>Real‑time analytics dashboards.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS analytics &amp; eventing; scalable store.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data; Event Streams.</td>
+<td>Publish real‑time analytics with equity lenses; ensure public dashboards reflect data quality controls.</td>
+<td class='muted'>Dashboard links; SLA metrics; KPI catalog.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Analytics &amp; Reporting</td>
+<td>Demographics tracking of respondents (age, ZIP, gender, etc.).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data &amp; governance.</td>
+<td class='muted'>Db2/Db2 Warehouse; Knowledge Catalog for metadata/lineage.</td>
+<td>Collect demographics with consent; privacy minimization; schema &amp; retention controls.</td>
+<td class='muted'>Data dictionary; consent text; retention policy.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Analytics &amp; Reporting</td>
+<td>Sentiment analysis across open‑text responses.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS AI &amp; governance.</td>
+<td class='muted'>watsonx.ai; watsonx.governance.</td>
+<td>Implement NLP pipeline; measure accuracy; document model drift monitoring.</td>
+<td class='muted'>Evaluation report; governance artifacts; alerting rules.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Analytics &amp; Reporting</td>
+<td>Compare engagement to census benchmarks (representativeness).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS analytics store &amp; compute.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data.</td>
+<td>Load ACS/census data; implement representativeness weighting and disclose methodology.</td>
+<td class='muted'>Benchmark workbook; sampling/weighting method.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Analytics &amp; Reporting</td>
+<td>Exports to Excel/CSV/PDF.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data services &amp; API mediation.</td>
+<td class='muted'>Db2 Warehouse; API Connect (download endpoints).</td>
+<td>Implement role‑scoped exports; log access; ensure PII minimization in exports.</td>
+<td class='muted'>Export samples; access logs; PII minimization note.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Transparency &amp; Public Access</td></tr>
+<tr>
+<td>15</td>
+<td>Transparency &amp; Public Access</td>
+<td>Public dashboards with aggregated results.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting &amp; cache; CDN option (if used).</td>
+<td class='muted'>OpenShift; (optional) CDN via IBM Cloud Internet Services if desired.</td>
+<td>Deliver public site with uptime &amp; cache strategy; clear methodology notes on charts.</td>
+<td class='muted'>Public URL; uptime SLO; methodology page.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Transparency &amp; Public Access</td>
+<td>Residents track project updates and see feedback outcomes.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS runtime and API.</td>
+<td class='muted'>OpenShift; API Connect.</td>
+<td>Provide project pages, update feeds, and ‘you said / we did’ traceability.</td>
+<td class='muted'>Sample project page; update history; notification hooks.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Transparency &amp; Public Access</td>
+<td>Email notification system for topic updates.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging.</td>
+<td class='muted'>Event Notifications.</td>
+<td>Configure subscriptions, double‑opt‑in, bounce handling, and digest settings.</td>
+<td class='muted'>Comms policy; bounce &amp; complaint handling metrics.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Security &amp; Privacy</td></tr>
+<tr>
+<td>18</td>
+<td>Security &amp; Privacy</td>
+<td>Encryption in transit and at rest.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS security &amp; KMS; TLS termination.</td>
+<td class='muted'>Key Protect / Hyper Protect Crypto Services; Load Balancer (TLS).</td>
+<td>Enforce app‑level TLS; use CMKs for database/warehouse; rotate keys; document crypto posture.</td>
+<td class='muted'>KMS key plan; TLS cipher list; evidence of encryption at rest.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Security &amp; Privacy</td>
+<td>Role-based access for City staff.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and access services.</td>
+<td class='muted'>IBM Verify / App ID; IBM Cloud IAM (service policies).</td>
+<td>Design RBAC/ABAC in the app; SCIM/user provisioning; least‑privilege roles; admin audit.</td>
+<td class='muted'>RBAC matrix; provisioning SOP; quarterly access review plan.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Security &amp; Privacy</td>
+<td>GDPR/CCPA‑style privacy protections.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS compliance tooling and evidence.</td>
+<td class='muted'>Security and Compliance Center (controls, evidence); Activity Tracker (audit).</td>
+<td>Publish privacy policy, consent, DSAR/export/erasure processes; logging/audit trails.</td>
+<td class='muted'>Privacy policy; DSAR SOP; audit samples.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Security &amp; Privacy</td>
+<td>Ability to anonymize sensitive resident data.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS data tooling; analytics store.</td>
+<td class='muted'>Db2 Warehouse functions; Knowledge Catalog tags/classifications.</td>
+<td>Implement de‑identification/anonymization; document re‑identification risk.</td>
+<td class='muted'>De‑identification method; test before/after samples.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Technical</td></tr>
+<tr>
+<td>T1</td>
+<td>Technical</td>
+<td>Cloud‑based SaaS; vendor‑managed hosting, patches, and upgrades.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS foundation for SaaS delivery; multi‑zone HA.</td>
+<td class='muted'>OpenShift (ROKS) multi‑zone; Container Registry; Continuous Delivery; Monitoring/Logs.</td>
+<td>Be the SaaS vendor of record; operate, patch, upgrade; provide SLA and incident communications.</td>
+<td class='muted'>SaaS responsibility matrix; patch/upgrade calendar; maintenance windows.</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Technical</td>
+<td>Supports concurrent logins across multiple departments.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and runtime scalability.</td>
+<td class='muted'>IBM Verify/App ID; OpenShift autoscaling.</td>
+<td>Design tenancy, throttling, and concurrency limits; run load tests; document SSO realms/spaces.</td>
+<td class='muted'>Load test results; tenancy model; SSO configuration.</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Technical</td>
+<td>Works on iOS and Android mobile devices; no client‑side installs.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting and content delivery.</td>
+<td class='muted'>OpenShift; API Connect; (optional) CDN.</td>
+<td>Deliver responsive web app; verify mobile browser compatibility; avoid native installs.</td>
+<td class='muted'>Mobile compatibility matrix; device/browser QA results.</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Technical</td>
+<td>Uptime SLA of 99.9%.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS multi‑zone design and observability.</td>
+<td class='muted'>ROKS multi‑zone; Cloud Monitoring; Cloud Logs/Activity Tracker; Flow Logs.</td>
+<td>Own SLA; publish SLOs &amp; monthly uptime; drill incident response; provide postmortems.</td>
+<td class='muted'>SLA doc; SLO dashboard; sample postmortem.</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>Technical</td>
+<td>Integrates with City website and social media platforms; Laserfiche.</td>
+<td><span class='badge M'>M</span></td>
+<td>API gateway and integration services.</td>
+<td class='muted'>API Connect; Event Notifications; Event Streams.</td>
+<td>Build/maintain connectors; adhere to gateway policies; ensure auditability and rate limits.</td>
+<td class='muted'>Integration runbooks; API specs; audit samples.</td>
+</tr>
+</tbody></table></div>
+<div class='foot'>Notes: All external integrations flow through API Connect; encryption uses CMKs (Key Protect/Hyper Protect); observability via Cloud Monitoring, Cloud Logs, and Activity Tracker; multi‑zone ROKS for ≥99.9% availability.</div>
+</section>
+<section class='panel' id='panel-Lantrasoft'>
+<div class='tagline'>Lantrasoft — Cost‑effective custom portal + ISV fallback; Midwest proximity</div>
+<div class='notes'>Differentiators: <span class='chip'>Lean WCAG‑compliant portal on ROKS/Kubernetes; fast iteration cycles.</span> <span class='chip'>Midwest on‑site PM and Tier‑1/2 helpdesk; vendor‑managed hosting and observability.</span> <span class='chip'>Optional ISV fallback (PublicInput/CitizenLab) with IBM Cloud integration preserved.</span></div>
+<div style='margin-top:12px;overflow:auto'>
+<table>
+<thead><tr>
+<th style='width:56px'>ID</th>
+<th style='width:170px'>Category</th>
+<th>Requirement</th>
+<th style='width:120px'>Priority</th>
+<th style='width:220px'>IBM Cloud scope (IaaS/PaaS/SaaS)</th>
+<th style='width:300px'>IBM Cloud services (delivered via partner)</th>
+<th style='width:380px'>Business Partner must deliver (as vendor of record)</th>
+<th style='width:260px'>Evidence / Artifacts</th>
+</tr></thead><tbody>
+<tr><td colspan='8' class='cat'>Engagement Tools</td></tr>
+<tr>
+<td>1</td>
+<td>Engagement Tools</td>
+<td>Online surveys with customizable question types (multiple‑choice, open‑ended, ranking).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS/SaaS platform support for backend services; secure runtime; scalable data store.</td>
+<td class='muted'>OpenShift (ROKS), API Connect, Db2 or Databases for PostgreSQL; Cloud Load Balancer.</td>
+<td>Deliver lean survey UX in a custom portal or configure the selected ISV; prioritize rapid iterations and cost control.</td>
+<td class='muted'>Working survey module with admin configuration; load test summary; UI walkthrough.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Engagement Tools</td>
+<td>Digital polling/voting tools for quick feedback.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for APIs and data; event capture.</td>
+<td class='muted'>API Connect, Event Streams (Kafka), Db2/Db2 Warehouse.</td>
+<td>Implement polling/voting flows; ensure anti‑ballot stuffing controls and auditability.</td>
+<td class='muted'>Demonstrate vote workflow, rate‑limit &amp; fraud controls, and audit trail.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Engagement Tools</td>
+<td>Integrates AI into data gathering and analysis.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS for AI services &amp; governance.</td>
+<td class='muted'>watsonx.ai Studio; watsonx.governance; Knowledge Catalog.</td>
+<td>Design NLP (sentiment/themes) pipeline; register models/runs; document guardrails and bias testing.</td>
+<td class='muted'>Model cards &amp; governance records; sample outputs; risk controls.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Engagement Tools</td>
+<td>Interactive mapping for geographic feedback (pin‑on‑map).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS runtime and API mediation for map SDKs.</td>
+<td class='muted'>API Connect; OpenShift (hosting of map components).</td>
+<td>Provide mapping UX and storage of geo‑responses; license/operate chosen map SDK; ensure WCAG compliance.</td>
+<td class='muted'>Live demo with map interactions; WCAG checks for map controls.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Engagement Tools</td>
+<td>Gamification (points/rewards).</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime and data store; optional eventing.</td>
+<td class='muted'>OpenShift; Db2; Event Streams.</td>
+<td>If offered, design rules, privacy‑safe leaderboards/badges; opt‑in controls.</td>
+<td class='muted'>Feature spec; privacy note; sample leaderboard.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Equity &amp; Accessibility</td></tr>
+<tr>
+<td>6</td>
+<td>Equity &amp; Accessibility</td>
+<td>ADA/WCAG 2.1 AA accessibility compliance.</td>
+<td><span class='badge M'>M</span></td>
+<td>N/A – app/UI responsibility (IBM provides hosting and security).</td>
+<td class='muted'>—</td>
+<td>Own VPAT for the custom portal; remediate findings pre‑go‑live.</td>
+<td class='muted'>Current VPAT; 3rd‑party audit summary; remediation log.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Equity &amp; Accessibility</td>
+<td>Multilingual support.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS messaging; runtime.</td>
+<td class='muted'>Event Notifications (email/SMS) for multilingual comms; OpenShift for language packs/services.</td>
+<td>Deliver locale strategy, translation workflow, RTL support, and language toggles.</td>
+<td class='muted'>Language matrix; sample localized UI; translation QA process.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Equity &amp; Accessibility</td>
+<td>SMS/text message input for residents without internet access.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging &amp; API gateway.</td>
+<td class='muted'>Event Notifications (SMS), API Connect.</td>
+<td>Enable SMS intake with verification, consent logging, and routing into the same data pipeline.</td>
+<td class='muted'>SMS journey diagram; consent &amp; opt‑out records; test transcripts.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Equity &amp; Accessibility</td>
+<td>Capture paper survey responses into the system.</td>
+<td><span class='badge O'>O</span></td>
+<td>PaaS runtime &amp; API gateway for ingestion.</td>
+<td class='muted'>API Connect; Object Storage (optional) for scanned artifacts.</td>
+<td>Define manual entry/scanning process; double‑entry QC; chain‑of‑custody to Laserfiche.</td>
+<td class='muted'>Procedure &amp; training; sample scanned record; QC stats.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Analytics &amp; Reporting</td></tr>
+<tr>
+<td>10</td>
+<td>Analytics &amp; Reporting</td>
+<td>Real‑time analytics dashboards.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS analytics &amp; eventing; scalable store.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data; Event Streams.</td>
+<td>Publish city &amp; public dashboards; refresh under SLA; document KPI definitions.</td>
+<td class='muted'>Dashboard links; SLA metrics; KPI catalog.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Analytics &amp; Reporting</td>
+<td>Demographics tracking of respondents (age, ZIP, gender, etc.).</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data &amp; governance.</td>
+<td class='muted'>Db2/Db2 Warehouse; Knowledge Catalog for metadata/lineage.</td>
+<td>Collect demographics with consent; privacy minimization; schema &amp; retention controls.</td>
+<td class='muted'>Data dictionary; consent text; retention policy.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Analytics &amp; Reporting</td>
+<td>Sentiment analysis across open‑text responses.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS AI &amp; governance.</td>
+<td class='muted'>watsonx.ai; watsonx.governance.</td>
+<td>Implement NLP pipeline; measure accuracy; document model drift monitoring.</td>
+<td class='muted'>Evaluation report; governance artifacts; alerting rules.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Analytics &amp; Reporting</td>
+<td>Compare engagement to census benchmarks (representativeness).</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS analytics store &amp; compute.</td>
+<td class='muted'>Db2 Warehouse / watsonx.data.</td>
+<td>Load ACS/census sets; define weighting/normalization; publish equity lenses.</td>
+<td class='muted'>Benchmark workbook; sampling/weighting method.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Analytics &amp; Reporting</td>
+<td>Exports to Excel/CSV/PDF.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS data services &amp; API mediation.</td>
+<td class='muted'>Db2 Warehouse; API Connect (download endpoints).</td>
+<td>Implement role‑scoped exports; log access; ensure PII minimization in exports.</td>
+<td class='muted'>Export samples; access logs; PII minimization note.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Transparency &amp; Public Access</td></tr>
+<tr>
+<td>15</td>
+<td>Transparency &amp; Public Access</td>
+<td>Public dashboards with aggregated results.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting &amp; cache; CDN option (if used).</td>
+<td class='muted'>OpenShift; (optional) CDN via IBM Cloud Internet Services if desired.</td>
+<td>Deliver public site with uptime &amp; cache strategy; clear methodology notes on charts.</td>
+<td class='muted'>Public URL; uptime SLO; methodology page.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Transparency &amp; Public Access</td>
+<td>Residents track project updates and see feedback outcomes.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS runtime and API.</td>
+<td class='muted'>OpenShift; API Connect.</td>
+<td>Provide project pages, update feeds, and ‘you said / we did’ traceability.</td>
+<td class='muted'>Sample project page; update history; notification hooks.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Transparency &amp; Public Access</td>
+<td>Email notification system for topic updates.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS messaging.</td>
+<td class='muted'>Event Notifications.</td>
+<td>Configure subscriptions, double‑opt‑in, bounce handling, and digest settings.</td>
+<td class='muted'>Comms policy; bounce &amp; complaint handling metrics.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Security &amp; Privacy</td></tr>
+<tr>
+<td>18</td>
+<td>Security &amp; Privacy</td>
+<td>Encryption in transit and at rest.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS security &amp; KMS; TLS termination.</td>
+<td class='muted'>Key Protect / Hyper Protect Crypto Services; Load Balancer (TLS).</td>
+<td>Enforce app‑level TLS; use CMKs for database/warehouse; rotate keys; document crypto posture.</td>
+<td class='muted'>KMS key plan; TLS cipher list; evidence of encryption at rest.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Security &amp; Privacy</td>
+<td>Role-based access for City staff.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and access services.</td>
+<td class='muted'>IBM Verify / App ID; IBM Cloud IAM (service policies).</td>
+<td>Design RBAC/ABAC in the app; SCIM/user provisioning; least‑privilege roles; admin audit.</td>
+<td class='muted'>RBAC matrix; provisioning SOP; quarterly access review plan.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Security &amp; Privacy</td>
+<td>GDPR/CCPA‑style privacy protections.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS compliance tooling and evidence.</td>
+<td class='muted'>Security and Compliance Center (controls, evidence); Activity Tracker (audit).</td>
+<td>Publish privacy policy, consent, DSAR/export/erasure processes; logging/audit trails.</td>
+<td class='muted'>Privacy policy; DSAR SOP; audit samples.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Security &amp; Privacy</td>
+<td>Ability to anonymize sensitive resident data.</td>
+<td><span class='badge D'>D</span></td>
+<td>PaaS data tooling; analytics store.</td>
+<td class='muted'>Db2 Warehouse functions; Knowledge Catalog tags/classifications.</td>
+<td>Implement de‑identification/anonymization; document re‑identification risk.</td>
+<td class='muted'>De‑identification method; test before/after samples.</td>
+</tr>
+<tr><td colspan='8' class='cat'>Technical</td></tr>
+<tr>
+<td>T1</td>
+<td>Technical</td>
+<td>Cloud‑based SaaS; vendor‑managed hosting, patches, and upgrades.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS foundation for SaaS delivery; multi‑zone HA.</td>
+<td class='muted'>OpenShift (ROKS) multi‑zone; Container Registry; Continuous Delivery; Monitoring/Logs.</td>
+<td>Be the SaaS vendor of record; operate, patch, upgrade; provide SLA and incident communications.</td>
+<td class='muted'>SaaS responsibility matrix; patch/upgrade calendar; maintenance windows.</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Technical</td>
+<td>Supports concurrent logins across multiple departments.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS identity and runtime scalability.</td>
+<td class='muted'>IBM Verify/App ID; OpenShift autoscaling.</td>
+<td>Design tenancy, throttling, and concurrency limits; run load tests; document SSO realms/spaces.</td>
+<td class='muted'>Load test results; tenancy model; SSO configuration.</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Technical</td>
+<td>Works on iOS and Android mobile devices; no client‑side installs.</td>
+<td><span class='badge M'>M</span></td>
+<td>PaaS hosting and content delivery.</td>
+<td class='muted'>OpenShift; API Connect; (optional) CDN.</td>
+<td>Deliver responsive web app; verify mobile browser compatibility; avoid native installs.</td>
+<td class='muted'>Mobile compatibility matrix; device/browser QA results.</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Technical</td>
+<td>Uptime SLA of 99.9%.</td>
+<td><span class='badge M'>M</span></td>
+<td>IaaS/PaaS multi‑zone design and observability.</td>
+<td class='muted'>ROKS multi‑zone; Cloud Monitoring; Cloud Logs/Activity Tracker; Flow Logs.</td>
+<td>Own SLA; publish SLOs &amp; monthly uptime; drill incident response; provide postmortems.</td>
+<td class='muted'>SLA doc; SLO dashboard; sample postmortem.</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>Technical</td>
+<td>Integrates with City website and social media platforms; Laserfiche.</td>
+<td><span class='badge M'>M</span></td>
+<td>API gateway and integration services.</td>
+<td class='muted'>API Connect; Event Notifications; Event Streams.</td>
+<td>Build pragmatic connectors (Laserfiche/CMS/Social) through API Connect; maintain runbooks for each.</td>
+<td class='muted'>Integration runbooks; API specs; audit samples.</td>
+</tr>
+</tbody></table></div>
+<div class='foot'>Notes: All external integrations flow through API Connect; encryption uses CMKs (Key Protect/Hyper Protect); observability via Cloud Monitoring, Cloud Logs, and Activity Tracker; multi‑zone ROKS for ≥99.9% availability.</div>
+</section>
+</body></html>
