@@ -184,6 +184,17 @@
             margin-bottom: 5px;
         }
         
+        .partner-name a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .partner-name a:hover {
+            color: #0f62fe;
+            text-decoration: underline;
+        }
+        
         .partner-pattern {
             font-size: 0.9em;
             color: #525252;
@@ -458,9 +469,9 @@
         <section class="partners-section">
             <h2>🤝 IBM Business Partner Architectures</h2>
             <div class="partners-grid">
-                <a href="perficient-civic-engagement.html" class="partner-card">
+                <div class="partner-card" onclick="window.location.href='perficient-civic-engagement.html'">
                     <div class="partner-header">
-                        <div class="partner-name">Perficient</div>
+                        <div class="partner-name"><a href="https://www.perficient.com/" target="_blank" onclick="event.stopPropagation()">Perficient</a></div>
                         <div class="partner-pattern">Prime Application + Systems Integrator</div>
                     </div>
                     <div class="partner-content">
@@ -484,11 +495,11 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="glasshouse-civic-platform.html" class="partner-card">
+                <div class="partner-card" onclick="window.location.href='glasshouse-civic-platform.html'">
                     <div class="partner-header">
-                        <div class="partner-name">GlassHouse Systems</div>
+                        <div class="partner-name"><a href="https://www.ghsystems.com/" target="_blank" onclick="event.stopPropagation()">GlassHouse Systems</a></div>
                         <div class="partner-pattern">Infrastructure Security Anchor + Managed SecOps</div>
                     </div>
                     <div class="partner-content">
@@ -511,11 +522,11 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="accelbi-civic-platform.html" class="partner-card">
+                <div class="partner-card" onclick="window.location.href='accelbi-civic-platform.html'">
                     <div class="partner-header">
-                        <div class="partner-name">AccelBI</div>
+                        <div class="partner-name"><a href="https://www.accelbi.com/" target="_blank" onclick="event.stopPropagation()">AccelBI</a></div>
                         <div class="partner-pattern">Data/AI-Forward Application + Analytics Depth</div>
                     </div>
                     <div class="partner-content">
@@ -540,11 +551,11 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="lantrasoft-civic-platform.html" class="partner-card">
+                <div class="partner-card" onclick="window.location.href='lantrasoft-civic-platform.html'">
                     <div class="partner-header">
-                        <div class="partner-name">Lantrasoft</div>
+                        <div class="partner-name"><a href="https://www.lantrasoft.com/" target="_blank" onclick="event.stopPropagation()">Lantrasoft</a></div>
                         <div class="partner-pattern">Cost-Effective Custom + ISV Fallback</div>
                     </div>
                     <div class="partner-content">
@@ -568,7 +579,7 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
 
